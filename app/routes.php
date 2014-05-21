@@ -16,10 +16,7 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/login', function()
-{
-	return 'Please log in...';
-});
+Route::controller('/login', 'LoginController');
 
 Route::get('/manage', array('before' => 'auth', function()
 {
