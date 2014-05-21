@@ -16,7 +16,12 @@ Route::get('/', function()
 	return View::make('hello');
 });
 
-Route::get('/hash/{password}', function($password)
+Route::get('/login', function()
 {
-	return Hash::make($password);
+	return 'Please log in...';
 });
+
+Route::get('/manage', array('before' => 'auth', function()
+{
+	return 'Upload some photos!';
+}));

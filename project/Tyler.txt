@@ -1,0 +1,67 @@
+
+Pages
+=====
+
+- Philosophical information about logos
+
+- Portfolio
+
+- Affiliate marketing programs
+
+
+==========
+	Concept
+==========
+
+- New York, New York Casino:
+
+	+ From the outside, it's easy to see the door to get in
+	
+	+ Once you're inside, it's hard to find your way out
+
+- If you go to tyedart.com or littlelds.com from tyharmon.com, it should be "hard" to find your way back to tyharmon.com
+
+
+==========
+	Ideas
+==========
+
+- The background logo should periodically rotate (between the 6)
+
+- Four customer logos visible at all times
+
+- If you click a logo, it fills the entire four-logo area
+
+- When you scroll to the bottom, no extra spaces at the bottom
+
+- The logos should be clickable, unless they result in a dead link (use HTTP requests to check)
+
+- Custom blog (instead of using a third-party ... maybe)
+
+
+===========
+	DEV
+===========
+
+- Github will be used for source control
+
+- Try to start by thinking of the domain model and how it will be represented
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
