@@ -2,7 +2,6 @@
 
 class LoginController extends BaseController
 {
-	
 	/**
 	 * Handles GET requests to /login
 	 */

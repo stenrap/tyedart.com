@@ -18,6 +18,15 @@ Route::get('/', function()
 
 Route::controller('/login', 'LoginController');
 
+Route::get('/logout', function()
+{
+	if (Auth::check()) {
+		Auth::logout();
+	}
+	
+	return Redirect::to('/login');
+});
+
 Route::get('/manage', array('before' => 'auth', function()
 {
 	return 'Upload some photos!';
