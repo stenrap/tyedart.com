@@ -27,7 +27,11 @@ Route::get('/logout', function()
 	return Redirect::to('/login');
 });
 
+Route::controller('/manage', 'ManageController');
+
+/*
 Route::get('/manage', array('before' => 'auth', function()
 {
 	return 'Upload some photos!';
 }));
+*/
