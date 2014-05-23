@@ -10,10 +10,39 @@ class ManageController extends BaseController
 	/**
 	 * Handles GET requests to /manage
 	 */
-	public function getIndex()
+	public function index()
 	{
 		$logos = Logo::all();
+		return View::make('manage');
+// 		return "The caption for logo 1: ".$logos[1]->caption;
+	}
+	
+	/**
+	 * Handles POST requests to /manage
+	 */
+	public function store()
+	{
+		// This should return the ID of the newly created item
+		return "Thanks for posting! The id of the newly created item is...";
+	}
+	
+	/**
+	 * Handles PUT requests to /manage/{id}
+	 * 
+	 * @param int $id
+	 */
+	public function update($id)
+	{
 		
-		return "The caption for logo 1: ".$logos[1]->caption;
+	}
+	
+	/**
+	 * Handles DELETE requests to /manage/{id}
+	 * 
+	 * @param int $id
+	 */
+	public function destroy($id)
+	{
+		
 	}
 }

@@ -11,27 +11,18 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+Route::controller('login', 'LoginController');
 
-Route::controller('/login', 'LoginController');
-
-Route::get('/logout', function()
+Route::get('logout', function()
 {
 	if (Auth::check()) {
 		Auth::logout();
 	}
 	
-	return Redirect::to('/login');
+	return Redirect::to('/');
 });
 
-Route::controller('/manage', 'ManageController');
+// Route::controller('manage', 'ManageController');
+Route::resource('manage', 'ManageController', array('except' => array('create', 'show', 'edit')));
 
-/*
-Route::get('/manage', array('before' => 'auth', function()
-{
-	return 'Upload some photos!';
-}));
-*/
+Route::controller('/', 'HomeController');
