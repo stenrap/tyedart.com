@@ -424,17 +424,34 @@ th {
   padding: 0;
 }
 
+
 /* =========================
        end normalize.css
    ========================= */
 
 body {
-	background: #373737;
+	background: url(/assets/images/desktop/carbon.png);
 	width: 100%;
 }
 
 header {
-	background: #111111;
+	background: #1c1c1c;
+	height: 72px;
+}
+
+header h1 {
+	color: #cccccc;
+	float: left;
+	margin-left: 20px;
+}
+
+header a {
+	float: right;
+	margin: 20px 20px auto auto;
+}
+
+a {
+	text-decoration: none;
 }
 
 input {

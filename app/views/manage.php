@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang='en'>
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,8 @@
 </head>
 <body>
 	<header>
-		<a href="/logout"><img alt="Log Out" src="/assets/images/desktop/logout.png"></a>
+		<h1>Manage Logos</h1>
+		<a href="/logout" title="log out"><img alt="log out" src="/assets/images/desktop/unlock.png"></a>
 	</header>
 	<form action="" method="post" enctype="multipart/form-data" id="upload-form">
 		<input type="file" name="logoFile" required />
