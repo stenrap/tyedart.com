@@ -25,7 +25,7 @@
 			<li>FACEBOOK</li>
 			<li>CONTACT</li>
 		</ul>
-	</div>	
+	</div>
 	<nav>
 		<ul>
 			<li>PORTFOLIO</li>
@@ -39,5 +39,11 @@
 	
 	<!-- WYLO: Put the logos here. One per row on phone (with caption visible?), two per row on desktop... -->
 	
+	<script src="/assets/js/jquery-min.js"></script>
+	<script src="/assets/js/underscore-min.js"></script>
+	<script src="/assets/js/backbone-min.js"></script>
+	<script src="/assets/js/models/menu.js"></script>
+	<script src="/assets/js/views/menu-system-view.js"></script>
+	<script src="/assets/js/apps/home-app.js"></script>
 </body>
 </html>

@@ -445,6 +445,7 @@ body {
 #menu {
 /* 	background-color: #444444; */
 	color: #cccccc;
+	cursor: pointer;
 	float: right;
 	font-size: 1.6em;
 	height: 50px;
@@ -535,6 +536,14 @@ nav {
         height: 5%;
         line-height: 550%;
     }
+}
+
+.displayNone {
+	display: none;
+}
+
+.displayBlock {
+	display: block;
 }
 
 
