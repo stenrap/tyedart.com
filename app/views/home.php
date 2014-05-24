@@ -16,7 +16,7 @@
 			<div id="bar3" class="menu-bar"></div>
 		</div>
 	</div>
-	<div id="mobile-nav">
+	<div id="mobile-nav" class="displayNone">
 		<ul>
 			<li>PORTFOLIO</li>
 			<li>QUOTE</li>
@@ -39,9 +39,9 @@
 	
 	<!-- WYLO: Put the logos here. One per row on phone (with caption visible?), two per row on desktop... -->
 	
-	<script src="/assets/js/jquery-min.js"></script>
-	<script src="/assets/js/underscore-min.js"></script>
-	<script src="/assets/js/backbone-min.js"></script>
+	<script src="/assets/js/libs/jquery-min.js"></script>
+	<script src="/assets/js/libs/underscore-min.js"></script>
+	<script src="/assets/js/libs/backbone-min.js"></script>
 	<script src="/assets/js/models/menu.js"></script>
 	<script src="/assets/js/views/menu-system-view.js"></script>
 	<script src="/assets/js/apps/home-app.js"></script>

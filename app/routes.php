@@ -22,7 +22,6 @@ Route::get('logout', function()
 	return Redirect::to('/');
 });
 
-// Route::controller('manage', 'ManageController');
 Route::resource('manage', 'ManageController', array('except' => array('create', 'show', 'edit')));
 
 Route::controller('/', 'HomeController');

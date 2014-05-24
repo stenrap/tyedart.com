@@ -17,6 +17,4 @@ $(function () {
 		el: "#mobile-nav"
 	});
 	
-	menuModel.toggle();
-	
 });

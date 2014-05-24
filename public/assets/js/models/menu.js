@@ -8,7 +8,7 @@ var app = app || {};
 	app.Menu = Backbone.Model.extend({
 		
 		defaults: {
-			visible: true
+			visible: false
 		},
 		
 		toggle: function() {
