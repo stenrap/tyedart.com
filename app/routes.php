@@ -11,6 +11,8 @@
 |
 */
 
+Route::resource('portfolio', 'PortfolioController', array('only' => array('index', 'show')));
+
 Route::controller('login', 'LoginController');
 
 Route::get('logout', function()
@@ -24,4 +26,5 @@ Route::get('logout', function()
 
 Route::resource('manage', 'ManageController', array('except' => array('create', 'show', 'edit')));
 
+// Specify the home controller last so it doesn't match every other path.
 Route::controller('/', 'HomeController');

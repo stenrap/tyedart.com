@@ -141,7 +141,7 @@ namespace {
 		 }
 
 		/**
-		 * Get the registered service provider instnace if it exists.
+		 * Get the registered service provider instance if it exists.
 		 *
 		 * @param \Illuminate\Support\ServiceProvider|string  $provider
 		 * @return \Illuminate\Support\ServiceProvider|null
@@ -176,7 +176,7 @@ namespace {
 		 }
 
 		/**
-		 * Register a deffered provider and service.
+		 * Register a deferred provider and service.
 		 *
 		 * @param string  $provider
 		 * @param string  $service
@@ -1141,7 +1141,7 @@ namespace {
 		 *
 		 * @param InputInterface  $input  An Input instance
 		 * @param OutputInterface $output An Output instance
-		 * @return int     0 if everything went fine, or an error code
+		 * @return int 0 if everything went fine, or an error code
 		 * @throws \Exception When doRun returns Exception
 		 * @api 
 		 * @static 
@@ -1156,7 +1156,7 @@ namespace {
 		 *
 		 * @param InputInterface  $input  An Input instance
 		 * @param OutputInterface $output An Output instance
-		 * @return int     0 if everything went fine, or an error code
+		 * @return int 0 if everything went fine, or an error code
 		 * @static 
 		 */
 		 public static function doRun($input, $output){
@@ -1225,7 +1225,7 @@ namespace {
 		/**
 		 * Sets whether to catch exceptions or not during commands execution.
 		 *
-		 * @param bool    $boolean Whether to catch exceptions or not during commands execution
+		 * @param bool $boolean Whether to catch exceptions or not during commands execution
 		 * @api 
 		 * @static 
 		 */
@@ -1337,7 +1337,7 @@ namespace {
 		 * Returns true if the command exists, false otherwise.
 		 *
 		 * @param string $name The command name or alias
-		 * @return bool    true if the command exists, false otherwise
+		 * @return bool true if the command exists, false otherwise
 		 * @api 
 		 * @static 
 		 */
@@ -1419,8 +1419,8 @@ namespace {
 		/**
 		 * Returns a text representation of the Application.
 		 *
-		 * @param string  $namespace An optional namespace name
-		 * @param bool    $raw       Whether to return raw command list
+		 * @param string $namespace An optional namespace name
+		 * @param bool   $raw       Whether to return raw command list
 		 * @return string A string representing the Application
 		 * @deprecated Deprecated since version 2.3, to be removed in 3.0.
 		 * @static 
@@ -1433,8 +1433,8 @@ namespace {
 		/**
 		 * Returns an XML representation of the Application.
 		 *
-		 * @param string  $namespace An optional namespace name
-		 * @param bool    $asDom     Whether to return a DOM or an XML string
+		 * @param string $namespace An optional namespace name
+		 * @param bool   $asDom     Whether to return a DOM or an XML string
 		 * @return string|\DOMDocument An XML string representing the Application
 		 * @deprecated Deprecated since version 2.3, to be removed in 3.0.
 		 * @static 
@@ -6504,7 +6504,7 @@ namespace {
 		 }
 
 		/**
-		 * Determine if the request contains a non-emtpy value for an  input item.
+		 * Determine if the request contains a non-emtpy value for an input item.
 		 *
 		 * @param string|array  $key
 		 * @return bool
@@ -7933,7 +7933,7 @@ namespace {
 		 }
 
 		/**
-		 * Set the fallback locale being used.
+		 * Get the fallback locale being used.
 		 *
 		 * @return string
 		 * @static 
@@ -8665,12 +8665,12 @@ namespace {
 		 * @param \Illuminate\Auth\Reminders\RemindableInterface  $user
 		 * @param string   $token
 		 * @param Closure  $callback
-		 * @return void
+		 * @return int
 		 * @static 
 		 */
 		 public static function sendReminder($user, $token, $callback = null){
 			//Method inherited from \Illuminate\Auth\Reminders\PasswordBroker
-			 \Illuminate\Auth\Reminders\PasswordBroker::sendReminder($user, $token, $callback);
+			return \Illuminate\Auth\Reminders\PasswordBroker::sendReminder($user, $token, $callback);
 		 }
 
 		/**
@@ -9318,7 +9318,7 @@ namespace {
 		 }
 
 		/**
-		 * Determine if the request contains a non-emtpy value for an  input item.
+		 * Determine if the request contains a non-emtpy value for an input item.
 		 *
 		 * @param string|array  $key
 		 * @return bool
@@ -11166,6 +11166,18 @@ namespace {
 		 public static function hasTable($table){
 			//Method inherited from \Illuminate\Database\Schema\MySqlBuilder
 			return \Illuminate\Database\Schema\MySqlBuilder::hasTable($table);
+		 }
+
+		/**
+		 * Get the column listing for a given table.
+		 *
+		 * @param string  $table
+		 * @return array
+		 * @static 
+		 */
+		 public static function getColumnListing($table){
+			//Method inherited from \Illuminate\Database\Schema\MySqlBuilder
+			return \Illuminate\Database\Schema\MySqlBuilder::getColumnListing($table);
 		 }
 
 		/**

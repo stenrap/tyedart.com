@@ -37,13 +37,11 @@
 		</ul>
 	</nav>
 	
-	<!-- WYLO: Put the logos here. One per row on phone (with caption visible?), two per row on desktop... -->
-	
 	<script src="/assets/js/libs/jquery-min.js"></script>
 	<script src="/assets/js/libs/underscore-min.js"></script>
 	<script src="/assets/js/libs/backbone-min.js"></script>
 	<script src="/assets/js/models/menu.js"></script>
 	<script src="/assets/js/views/menu-system-view.js"></script>
-	<script src="/assets/js/apps/home-app.js"></script>
+	<script src="/assets/js/apps/menu-app.js"></script>
 </body>
 </html>
