@@ -425,6 +425,8 @@ th {
 }
 
 
+
+
 /* =========================
        end normalize.css
    ========================= */
@@ -442,6 +444,16 @@ body {
 	background-repeat: no-repeat;
 }
 
+a {
+	text-decoration: none;
+}
+
+#menu-wrapper {
+	height: 50px;
+	margin: 10px 20px 10px auto;
+	width: 100%;
+}
+
 #menu {
 /* 	background-color: #444444; */
 	color: #cccccc;
@@ -449,7 +461,7 @@ body {
 	float: right;
 	font-size: 1.6em;
 	height: 50px;
-	margin: 10px 20px 10px auto;
+	margin-right: 20px;
 	width: 76px;
 }
 
@@ -478,7 +490,8 @@ body {
 	background-color: #aaaaaa;
 	clear: both;
 	margin: 0 auto;
-	opacity: 0.875;
+	opacity: 0.975;
+	position: absolute;
 	width: 100%;
 }
 
@@ -501,16 +514,55 @@ body {
 	border-bottom: none;
 }
 
+#mobile-nav ul li a {
+	display: block;
+	width: 100%;
+}
+
+#mobile-nav ul li a:link, #mobile-nav ul li a:visited {
+	color: #000000;
+}
+
 nav {
 	display: none;
 }
 
+#thumbnail-container {
+/* 	background-color: #777777; */
+    margin: 0 auto;
+	width: 320px;
+}
+
+.thumbnail {
+	display: inline-block;
+}
+
+
+/* ================================================== 550 px ================================================== */
+
+@media screen and (min-width: 550px) {
+	
+	#thumbnail-container {
+	    width: 540px;
+	}
+	
+	.thumbnail img {
+	    height: auto;
+	    width: 265px;
+	}
+	
+}
+
+
+/* ================================================== 769 px ================================================== */
+
 @media screen and (min-width: 769px) {
+	
     body {
         background-image: url(/assets/images/desktop/background-blue-wings.jpg);
     }
     
-    #menu, #mobile-nav {
+    #menu-wrapper, #menu, #mobile-nav {
         display: none;
     }
     
@@ -536,6 +588,12 @@ nav {
         height: 5%;
         line-height: 550%;
     }
+    
+    #thumbnail-container {
+        float: left;
+        margin-top: 6.75%;
+    }
+    
 }
 
 .displayNone {

@@ -1,11 +1,5 @@
 <?php
 
-// $mustache = new Mustache_HTML_Engine();
-
-// $template = $mustache->loadTemplate('portfolio');
-
-// echo $template->render(array('planet' => 'Earth'));
-
 $bishop = new OneLogo('Bishop Software');
 $canyon = new OneLogo('Canyon Precision Machine');
 $celise = new OneLogo('Celise Salmon Photography');

@@ -22,9 +22,9 @@ Pages
 - If you go to tyedart.com or littlelds.com from tyharmon.com, it should be "hard" to find your way back to tyharmon.com
 
 
-==========
+=============
 	Ideas
-==========
+=============
 
 - The background logo should periodically rotate (between the 6)
 
@@ -46,6 +46,20 @@ Pages
 - Github will be used for source control
 
 - Try to start by thinking of the domain model and how it will be represented
+
+
+============================
+    Phone Call 5/28/2014
+============================
+
+- The background images are different sizes. Should I try to prevent them from "interfering" with the menu on the left? If so, is there one size
+  that could be the maximum?
+
+  + They should not interfere. You should not be creating a max logo.
+
+- Do you want the patriotic background images to automatically appear within certain date ranges?
+
+  + Yes...and there will likely be other backgrounds for other holidays (so you should design the code up front to check for holidays first)
 
 
 

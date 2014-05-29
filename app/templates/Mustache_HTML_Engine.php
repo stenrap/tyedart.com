@@ -18,9 +18,9 @@ class Mustache_HTML_Engine extends Mustache_Engine
 	public function renderContent($title, $template, $data, $scripts)
 	{
 		$baseTemplate    = $this->loadTemplate('base');
-		$contentTemplate = $this->loadTemplate($template);
-		$contentHtml     = $contentTemplate->render($data);
-// 		return $contentHtml;
+		$contentTemplate = is_null($template) ? '' : $this->loadTemplate($template);
+		$contentHtml     = is_null($template) ? '' : $contentTemplate->render($data);
+		
 		return $baseTemplate->render(array('title' => $title, 'content' => $contentHtml, 'scripts' => ''));
 	}
 }

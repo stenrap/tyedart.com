@@ -8,17 +8,19 @@
     <link rel="stylesheet" href="/assets/css/tyedart.css">
 </head>
 <body>
-    <div id="menu">
-        <span>MENU</span>
-        <div id="bars">
-            <div id="bar1" class="menu-bar"></div>
-            <div id="bar2" class="menu-bar"></div>
-            <div id="bar3" class="menu-bar"></div>
-        </div>
-    </div>
+    <div id="menu-wrapper">
+	    <div id="menu">
+	        <span>MENU</span>
+	        <div id="bars">
+	            <div id="bar1" class="menu-bar"></div>
+	            <div id="bar2" class="menu-bar"></div>
+	            <div id="bar3" class="menu-bar"></div>
+	        </div>
+	    </div>
+	</div>
     <div id="mobile-nav" class="displayNone">
         <ul>
-            <li>PORTFOLIO</li>
+            <li><a href="portfolio">PORTFOLIO</a></li>
             <li>QUOTE</li>
             <li>LOGO-OLOGY</li>
             <li>RESOURCES</li>
@@ -37,7 +39,7 @@
         </ul>
     </nav>
     
-    {{{content}}}
+{{{content}}}
     
     <script src="/assets/js/libs/jquery-min.js"></script>
     <script src="/assets/js/libs/underscore-min.js"></script>
