@@ -496,16 +496,31 @@ a {
 }
 
 #content {
-	background: #000000;
+/* 	background: #000000; */
 	margin: 0 auto;
 	width: 960px;
 }
 
-#manage-wrapper {
-	background: #555555;
+h2 {
+	color: #cccccc;
+	font-style: italic;
+	margin-bottom: 10px
+}
+
+hr {
+    background-image: -webkit-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0));
+    background-image:    -moz-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0));
+    background-image:     -ms-linear-gradient(left, rgba(255,255,255,0), rgba(255,255,255,0.75), rgba(255,255,255,0));
+    border: 0;
+    height: 1px;
+    margin-bottom: 25px;
+}
+
+#upload-wrapper {
+/* 	background: #555555; */
 	margin: 0 auto;
 	position: relative;
-    width: 400px;
+    width: 600px;
 }
 
 #upload-form input[type="text"] {
@@ -517,7 +532,7 @@ a {
     margin-top: 10px;
     outline: none;
     padding: 0 10px;
-    width: 300px;
+    width: 500px;
 }
 
 input {
