@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tyedart - {{title}}</title>
     <link rel="stylesheet" href="/assets/css/tyedart.css">
+    <style type="text/css">
+        body { background-image: url(/assets/images/phone/{{{background}}}); }
+        @media screen and (min-width: 769px) { body { background-image: url(/assets/images/desktop/{{{background}}}); } }
+    </style>
 </head>
 <body>
     <div id="menu-wrapper">

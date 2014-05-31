@@ -15,12 +15,18 @@ class Mustache_HTML_Engine extends Mustache_Engine
 		));
 	}
 	
-	public function renderContent($title, $template, $data, $scripts)
+	public function renderContent($title, $background, $template, $data, $scripts)
 	{
 		$baseTemplate    = $this->loadTemplate('base');
 		$contentTemplate = is_null($template) ? '' : $this->loadTemplate($template);
 		$contentHtml     = is_null($template) ? '' : $contentTemplate->render($data);
 		
-		return $baseTemplate->render(array('title' => $title, 'content' => $contentHtml, 'scripts' => ''));
+		return $baseTemplate->render(array(
+				
+				'title' => $title,
+				'background' => $background,
+				'content' => $contentHtml,
+				'scripts' => '',
+		));
 	}
 }
