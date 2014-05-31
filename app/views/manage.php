@@ -11,12 +11,14 @@
 		<h1>Manage Logos</h1>
 		<a href="/logout" title="log out"><img alt="log out" src="/assets/images/desktop/unlock.png"></a>
 	</header>
-	<form action="" method="post" enctype="multipart/form-data" id="upload-form">
-		<input type="file" name="logoFile" required />
-		<input type="text" name="caption" placeholder="Caption" required />
-		<input type="text" name="url" placeholder="URL" />
-		<input type="submit" value="Upload Logo" />
-	</form>
-	
+	<div id="content">
+		<div id="manage-wrapper">
+			<form action="" method="post" enctype="multipart/form-data" id="upload-form">
+				<input type="file" name="logoFile" required />
+				<input type="text" name="caption" placeholder="Caption" required />
+				<input type="text" name="url" placeholder="URL" />
+			</form>
+		</div>
+	</div>
 </body>
 </html>

@@ -29,7 +29,7 @@
 			<input type="password" name="password" id="login-password" placeholder="Password" required />
 		</form>
 		<div id="login-button-back"></div>
-		<div id="login-button" title="Authenticate"></div>
+		<div id="login-button" title="log in"></div>
 	</div>
 </body>
 </html>
