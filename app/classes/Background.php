@@ -22,22 +22,6 @@ class Background
 	
 	public static function get()
 	{
-		/* 
-		 	if (param back is set)
-		 		return the specific background requested
-		 	
-			if (4th of July)
-				return one of the two patriotic logos
-			
-			if cookie && cookie + 1 < count($backgrounds)
-				set cookie to cookie + 1
-				return large/small $backgrounds[cookie]
-			
-			set cookie to 0
-			return large/small $backgrounds[0]
-			
-		 */
-		
 		if (Input::has('back')) {
 			$back = Input::get('back') - 1;
 			if (Input::has('july') && $back < count(self::$july)) {
@@ -50,10 +34,25 @@ class Background
 		
 		$year = date('Y');
 		
-		/* Check for July 4th */
+		// Check for July 4th
 		if (time() > strtotime("07/01/$year 12:00AM America/Los_Angeles") && 
-			time() < strtotime("07/08/$year 12:00AM America/Los_Angeles")) {
-			return self::$july[1]; // WYLO ... Create a function that accepts an array and does the rest of the pseudo code above...
+			time() < strtotime("07/05/$year 12:00AM America/Los_Angeles")) {
+			return self::getWithCookie(self::$july);
 		}
+		
+		// Check for another holiday...?
+		
+		// Return one of the default backgrounds
+		return self::getWithCookie(self::$backgrounds);
+	}
+	
+	private static function getWithCookie($backgroundArray)
+	{
+		$backgroundNumber = Cookie::has('back') ? Cookie::get('back') : -1;
+		$backgroundNumber = $backgroundNumber + 1 < count($backgroundArray) ? $backgroundNumber + 1 : 0;
+		
+		Cookie::queue('back', $backgroundNumber, 60 * 24 * 365);
+		
+		return $backgroundArray[$backgroundNumber];
 	}
 }
