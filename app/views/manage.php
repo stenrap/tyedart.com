@@ -16,9 +16,10 @@
 		<hr>
 		<div id="upload-wrapper">
 			<form action="" method="post" enctype="multipart/form-data" id="upload-form">
-				<input type="file" name="logoFile" required />
+				<input type="file" name="logoFile" accept="image/*" required />
 				<input type="text" name="caption" placeholder="Caption (two to three words)" required />
-				<input type="text" name="url" placeholder="URL" />
+				<input type="url" name="url" placeholder="URL" />
+				<input type="submit" value="Upload Logo" />
 			</form>
 		</div>
 		<h2>:: Edit Logos ::</h2>
