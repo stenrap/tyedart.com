@@ -23,7 +23,18 @@ class ManageController extends BaseController
 	public function store()
 	{
 		// This should return the ID of the newly created item
-		return "Thanks for posting! The id of the newly created item is...";
+		$newName = null;
+		
+		if (Input::hasFile('logoFile') && Input::file('logoFile')->isValid()) {
+			$newName = uniqid() . '.' . Input::file('logoFile')->getClientOriginalExtension();
+			Input::file('logoFile')->move(public_path().'/assets/images/desktop', $newName);
+		}
+		
+		// WYLO: Insert the new logo into the database...
+		//       then make the thumbnail...
+		//       then redirect to (/manage) so that page refresh doesn't cause another POST...
+		
+		return "Thanks for posting to ".public_path()."/assets/images/desktop/".$newName."! The id of the newly created item is...";
 	}
 	
 	/**
