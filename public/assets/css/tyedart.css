@@ -427,9 +427,9 @@ th {
 
 
 
-/* =========================
-       end normalize.css
-   ========================= */
+/* ===========================================================================
+                                end normalize.css
+   =========================================================================== */
 
 html {
 	font-size: 62.5%;
@@ -442,6 +442,7 @@ body {
 /*     background-image: url(/assets/images/phone/background-blue-wings.jpg); */
 	background-position: center center;
 	background-repeat: no-repeat;
+	font-family: Helvetica, Arial, Sans-Serif;
 }
 
 a {

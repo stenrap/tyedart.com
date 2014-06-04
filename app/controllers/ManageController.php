@@ -2,6 +2,8 @@
 
 class ManageController extends BaseController
 {
+	const THUMBNAIL_SIZE = 320;	
+	
 	function __construct()
 	{
 		$this->beforeFilter('auth');
@@ -22,7 +24,10 @@ class ManageController extends BaseController
 	 */
 	public function store()
 	{
-		// This should return the ID of the newly created item
+		if (!Input::hasFile('logoFile') || !Input::has('caption')) {
+			return Redirect::to('manage');
+		}
+		
 		$newName = null;
 		
 		if (Input::hasFile('logoFile') && Input::file('logoFile')->isValid()) {
@@ -30,11 +35,47 @@ class ManageController extends BaseController
 			Input::file('logoFile')->move(public_path().'/assets/images/desktop', $newName);
 		}
 		
-		// WYLO: Insert the new logo into the database...
-		//       then make the thumbnail...
-		//       then redirect to (/manage) so that page refresh doesn't cause another POST...
+		DB::beginTransaction();
 		
-		return "Thanks for posting to ".public_path()."/assets/images/desktop/".$newName."! The id of the newly created item is...";
+		$place = Logo::all()->count();
+		$place++;
+		
+		DB::table('logos')->insert(array(
+		
+			'filename' => $newName,
+			'caption'  => Request::instance()->request->get('caption'),
+			'url'      => Request::instance()->request->get('url'),
+			'place'    => $place,
+			
+		));
+		
+		DB::commit();
+		
+		// WYLO: This works, but should you be scaling down the image instead of just cropping it...?!
+		
+		$desktopName = public_path().'/assets/images/desktop/'.$newName;
+		$srcImage    = imagecreatefromjpeg($desktopName);
+		$srcSize     = getimagesize($desktopName);
+		$srcW        = $srcSize[0];
+		$srcH        = $srcSize[1];
+		$srcX        = 0;
+		$srcY        = 0;
+		
+		if ($srcW > $srcH) {
+			$srcX = ($srcW - $srcH) / 2;
+			$srcW = $srcH;
+		} elseif ($srcH > $srcW) {
+			$srcY = ($srcH - $srcW) / 2;
+			$srcH = $srcW;
+		}
+		
+		$dstImage = imagecreatetruecolor(self::THUMBNAIL_SIZE, self::THUMBNAIL_SIZE);
+		
+		imagecopyresampled($dstImage, $srcImage, 0, 0, $srcX, $srcY, self::THUMBNAIL_SIZE, self::THUMBNAIL_SIZE, $srcW, $srcH);
+		imagejpeg($dstImage, public_path().'/assets/images/thumbnails/'.$newName, 100);
+		imagedestroy($dstImage);
+		
+		return Redirect::to('manage');
 	}
 	
 	/**
@@ -44,7 +85,23 @@ class ManageController extends BaseController
 	 */
 	public function update($id)
 	{
-		
+		/*
+		 * Pseudo Code for Updating a Logo
+		 * 
+		 * ==================================================================
+		 *     Case 1: The logo was moved up (oldPlace = 4, newPlace = 1)
+		 * ==================================================================
+		 * 
+		 * 1. 
+		 * 
+		 * 
+		 * ====================================================================
+		 *     Case 2: The logo was moved down (oldPlace = 2, newPlace = 5)
+		 * ====================================================================
+		 * 
+		 * 1. 
+		 * 
+		 */
 	}
 	
 	/**

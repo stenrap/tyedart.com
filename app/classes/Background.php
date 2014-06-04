@@ -17,6 +17,7 @@ class Background
 		"back4.png",
 		"back5.png",
 		"back6.png",
+		"back7.png",
 		
 	);
 	
