@@ -51,8 +51,6 @@ class ManageController extends BaseController
 		
 		DB::commit();
 		
-		// WYLO: This works, but should you be scaling down the image instead of just cropping it...?!
-		
 		$desktopName = public_path().'/assets/images/desktop/'.$newName;
 		$srcImage    = imagecreatefromjpeg($desktopName);
 		$srcSize     = getimagesize($desktopName);
@@ -72,7 +70,7 @@ class ManageController extends BaseController
 		$dstImage = imagecreatetruecolor(self::THUMBNAIL_SIZE, self::THUMBNAIL_SIZE);
 		
 		imagecopyresampled($dstImage, $srcImage, 0, 0, $srcX, $srcY, self::THUMBNAIL_SIZE, self::THUMBNAIL_SIZE, $srcW, $srcH);
-		imagejpeg($dstImage, public_path().'/assets/images/thumbnails/'.$newName, 100);
+		imagejpeg($dstImage, public_path().'/assets/images/thumbnails/'.$newName, 80);
 		imagedestroy($dstImage);
 		
 		return Redirect::to('manage');

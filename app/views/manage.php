@@ -24,6 +24,9 @@
 		</div>
 		<h2>:: Edit Logos ::</h2>
 		<hr>
+		
+		<!-- WYLO: Show the uploaded images and make them draggable... -->
+		
 	</div>
 </body>
 </html>
