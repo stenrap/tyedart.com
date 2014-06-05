@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Manage Logos - Tyedart</title>
+    <link rel="stylesheet" href="/assets/css/vader/jquery-ui-min.css">
     <link rel="stylesheet" href="/assets/css/tyedart-manage.css">
+    <script src="/assets/js/libs/jquery-min.js"></script>
+    <script src="/assets/js/libs/jquery-ui-min.js"></script>
+    <script src="/assets/js/apps/manage-app.js"></script>
 </head>
 <body>
     <header>
@@ -25,16 +29,13 @@
         <h2>:: Edit Logos ::</h2>
         <hr>
         <div class="logo-section">
-            
-            <!-- WYLO: Add a JavaScript file and make these bad boys draggable, updateable, and deleteable... -->
-            
             {{#logos}}
             <div class="logo-draggable">
                 <div class="logo-preview" style="background-image: url(/assets/images/thumbnails/{{filename}})"></div>
                 <div class="logo-inputs">
+                    <input type="hidden" value="{{id}}" />
                     <input type="text" placeholder="Caption" value="{{caption}}" />
                     <input type="text" placeholder="External URL" value="{{url}}" />
-                    <input type="hidden" value="{{id}}" />
                 </div>
             </div>
             {{/logos}}

@@ -552,7 +552,11 @@ input {
 }
 
 .logo-draggable {
-    margin-bottom: 40px;
+	border: 1px solid #5a5a5a;
+	border-radius: 4px;
+	cursor: move;
+    margin-bottom: 30px;
+    padding: 20px;
 }
 
 .logo-preview {
@@ -562,8 +566,16 @@ input {
     cursor: move;
     float: left;
     height: 94px;
-    margin: 0 20px 0 40px;
+    margin: 0 20px 0 0;
     width: 94px;
+}
+
+.logo-inputs input {
+	margin-top: 0;
+}
+
+.logo-inputs input:last-child {
+    margin-top: 10px;
 }
 
 
