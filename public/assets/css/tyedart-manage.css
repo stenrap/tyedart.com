@@ -527,7 +527,7 @@ hr {
 	margin-bottom: 50px;
 }
 
-#upload-form input[type="text"], #upload-form input[type="url"] {
+input[type="text"], #upload-form input[type="url"] {
     background: linear-gradient(to bottom, rgba(16,16,16,0.625) 0%, rgba(0,0,0,0) 100%);
     border: 1px solid #414141;
     border-radius: 5px;
@@ -549,6 +549,21 @@ hr {
 
 input {
 	display: block;
+}
+
+.logo-draggable {
+    margin-bottom: 40px;
+}
+
+.logo-preview {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+    cursor: move;
+    float: left;
+    height: 94px;
+    margin: 0 20px 0 40px;
+    width: 94px;
 }
 
 

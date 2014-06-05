@@ -27,6 +27,13 @@ class Mustache_HTML_Engine extends Mustache_Engine
 				'background' => $background,
 				'content' => $contentHtml,
 				'scripts' => '',
+				
 		));
+	}
+	
+	public function renderManagePage()
+	{
+		$manageTemplate = $this->loadTemplate('manage');
+		return $manageTemplate->render(array('logos' => Logo::orderBy('place')->get()));
 	}
 }

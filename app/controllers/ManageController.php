@@ -37,15 +37,16 @@ class ManageController extends BaseController
 		
 		DB::beginTransaction();
 		
-		$place = Logo::all()->count();
-		$place++;
+		// Increment the place of all existing logos
+		DB::table('logos')->increment('place');
 		
+		// Insert the new logo at place 1
 		DB::table('logos')->insert(array(
 		
 			'filename' => $newName,
 			'caption'  => Request::instance()->request->get('caption'),
 			'url'      => Request::instance()->request->get('url'),
-			'place'    => $place,
+			'place'    => 1,
 			
 		));
 		
