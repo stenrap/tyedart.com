@@ -40,13 +40,13 @@ class ManageController extends BaseController
 		// Increment the place of all existing logos
 		DB::table('logos')->increment('place');
 		
-		// Insert the new logo at place 1
+		// Insert the new logo at place 0
 		DB::table('logos')->insert(array(
 		
 			'filename' => $newName,
 			'caption'  => Request::instance()->request->get('caption'),
 			'url'      => Request::instance()->request->get('url'),
-			'place'    => 1,
+			'place'    => 0,
 			
 		));
 		
@@ -84,11 +84,16 @@ class ManageController extends BaseController
 	 */
 	public function update($id)
 	{
+		$oldPlace = Input::get('oldPlace');
+		$newPlace = Input::get('newPlace');
+		
+		// WYLO...
+		
 		/*
 		 * Pseudo Code for Updating a Logo
 		 * 
 		 * ==================================================================
-		 *     Case 1: The logo was moved up (oldPlace = 4, newPlace = 1)
+		 *     Case 1: The logo was moved up (oldPlace = 3, newPlace = 0)
 		 * ==================================================================
 		 * 
 		 * 1. 
