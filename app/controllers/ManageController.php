@@ -2,7 +2,8 @@
 
 class ManageController extends BaseController
 {
-	const THUMBNAIL_SIZE = 320;	
+	const THUMBNAIL_SIZE  = 320;
+	const TEMP_LOGO_PLACE = 100000;
 	
 	function __construct()
 	{
@@ -84,28 +85,36 @@ class ManageController extends BaseController
 	 */
 	public function update($id)
 	{
-		$oldPlace = Input::get('oldPlace');
-		$newPlace = Input::get('newPlace');
-		
-		// WYLO...
-		
-		/*
-		 * Pseudo Code for Updating a Logo
-		 * 
-		 * ==================================================================
-		 *     Case 1: The logo was moved up (oldPlace = 3, newPlace = 0)
-		 * ==================================================================
-		 * 
-		 * 1. 
-		 * 
-		 * 
-		 * ====================================================================
-		 *     Case 2: The logo was moved down (oldPlace = 2, newPlace = 5)
-		 * ====================================================================
-		 * 
-		 * 1. 
-		 * 
-		 */
+		if (Input::has('move')) {
+			$oldPlace = Input::get('oldPlace');
+			$newPlace = Input::get('newPlace');
+			
+			DB::beginTransaction();
+			
+			DB::table('logos')
+						->where('place', '=', $oldPlace)
+						->update(array('place' => self::TEMP_LOGO_PLACE));
+			
+			if ($oldPlace > $newPlace) {
+				DB::table('logos')
+							->where('place', '>=', $newPlace)
+							->where('place', '<', $oldPlace)
+							->increment('place');
+			} else {
+				DB::table('logos')
+							->where('place', '>', $oldPlace)
+							->where('place', '<=', $newPlace)
+							->decrement('place');
+			}
+			
+			DB::table('logos')
+						->where('place', '=', self::TEMP_LOGO_PLACE)
+						->update(array('place' => $newPlace));
+			
+			DB::commit();
+		} elseif (Input::has('update')) {
+			
+		}
 	}
 	
 	/**

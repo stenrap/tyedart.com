@@ -12,7 +12,7 @@ function stopDrag(event, ui) {
 		// TODO: Show a waiting dialog here?
 		$.ajax({
 			url: '/manage/'+ui.item.startPos,
-			data: 'oldPlace='+ui.item.startPos+'&newPlace='+ui.item.index(),
+			data: 'move=1&oldPlace='+ui.item.startPos+'&newPlace='+ui.item.index(),
 			type: 'PUT'
 		})
 			.done(function() {
