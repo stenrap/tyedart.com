@@ -595,6 +595,11 @@ input {
 	margin-top: 20px;
 }
 
+/* hide the close button on the jquery dialogs */
+.no-close .ui-dialog-titlebar-close {
+    display: none;
+}
+
 
 
 

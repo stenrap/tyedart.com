@@ -113,7 +113,11 @@ class ManageController extends BaseController
 			
 			DB::commit();
 		} elseif (Input::has('update')) {
-			
+			$caption = Input::get('caption');
+			$url     = Input::get('url');
+			DB::table('logos')
+						->where('id', '=', $id)
+						->update(array('caption' => $caption, 'url' => $url));
 		}
 	}
 	
@@ -124,6 +128,20 @@ class ManageController extends BaseController
 	 */
 	public function destroy($id)
 	{
+		DB::beginTransaction();
 		
+		$place = DB::table('logos')
+							->where('id', '=', $id)
+							->pluck('place');
+		
+		DB::table('logos')
+					->where('id', '=', $id)
+					->delete();
+		
+		DB::table('logos')
+					->where('place', '>', $place)
+					->decrement('place');
+		
+		DB::commit();
 	}
 }
