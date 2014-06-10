@@ -6,9 +6,6 @@
     <title>Manage Logos - Tyedart</title>
     <link rel="stylesheet" href="/assets/css/vader/jquery-ui-min.css">
     <link rel="stylesheet" href="/assets/css/tyedart-manage.css">
-    <script src="/assets/js/libs/jquery-min.js"></script>
-    <script src="/assets/js/libs/jquery-ui-min.js"></script>
-    <script src="/assets/js/apps/manage-app.js"></script>
 </head>
 <body>
     <header>
@@ -28,18 +25,31 @@
         </div>
         <h2>:: Edit Logos ::</h2>
         <hr>
-        <div class="logo-section">
+        <div class="logo-section" id="booger">
             {{#logos}}
-            <div class="logo-draggable">
+            <div class="logo-draggable" data-id="{{id}}">
                 <div class="logo-preview" style="background-image: url(/assets/images/thumbnails/{{filename}})"></div>
                 <div class="logo-inputs">
-                    <input type="hidden" value="{{id}}" />
-                    <input type="text" placeholder="Caption" value="{{caption}}" />
-                    <input type="text" placeholder="External URL" value="{{url}}" />
+                    <input type="text" placeholder="Caption" value="{{caption}}" class="caption"/>
+                    <input type="text" placeholder="External URL" value="{{url}}" class="url"/>
+                </div>
+                <div class="logo-buttons">
+                    <button type="button" class="update">Update</button>
+                    <button type="button" class="delete">Delete</button>
                 </div>
             </div>
             {{/logos}}
         </div>
     </div>
+    <script src="/assets/js/libs/jquery-min.js"></script>
+    <script src="/assets/js/libs/jquery-ui-min.js"></script>
+    <script src="/assets/js/libs/underscore-min.js"></script>
+    <script src="/assets/js/libs/backbone-min.js"></script>
+    <script src="/assets/js/apps/manage-app.js"></script>
+    <script>
+        var app = app || {};
+        app.logos = new Backbone.Collection();
+        app.logos.reset({{{logos}}});
+    </script>
 </body>
 </html>

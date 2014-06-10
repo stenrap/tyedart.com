@@ -539,12 +539,16 @@ input[type="text"], #upload-form input[type="url"] {
     width: 600px;
 }
 
-#upload-form input[type="submit"] {
+#upload-form input[type="submit"], button {
 	border: 1px solid #414141;
 	border-radius: 5px;
 	height: 35px;
 	margin-top: 10px;
 	padding: 0 10px;
+}
+
+#upload-form input[type="submit"], button, input[type="file"] {
+	cursor: pointer;
 }
 
 input {
@@ -555,6 +559,7 @@ input {
 	border: 1px solid #5a5a5a;
 	border-radius: 4px;
 	cursor: move;
+	height: 94px;
     margin-bottom: 30px;
     padding: 20px;
 }
@@ -570,12 +575,24 @@ input {
     width: 94px;
 }
 
+.logo-inputs {
+	float: left;
+}
+
 .logo-inputs input {
 	margin-top: 0;
 }
 
 .logo-inputs input:last-child {
     margin-top: 10px;
+}
+
+.logo-buttons button:first-child {
+	margin-left: 28px;
+}
+
+.logo-buttons {
+	margin-top: 20px;
 }
 
 

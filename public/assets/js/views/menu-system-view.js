@@ -8,7 +8,7 @@ var app = app || {};
 	app.MenuButtonView = Backbone.View.extend({
 		
 		events: {
-			"click" : "toggleMenu"
+			"click": "toggleMenu"
 		},
 		
 		toggleMenu: function() {
