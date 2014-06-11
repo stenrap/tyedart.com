@@ -1,10 +1,22 @@
 <?php
 
-// $bishop = new OneLogo('Bishop Software');
-// $canyon = new OneLogo('Canyon Precision Machine');
-// $celise = new OneLogo('Celise Salmon Photography');
+$logos = Logo::orderBy('place')->get();
+$firstFourLogos = array();
 
-$data = new Logos('Rob', array());
+for ($i = 0; $i < count($logos); $i++) {
+	$firstFourLogos[] = $logos[$i];
+	if ($i == 3)
+		break;
+}
+
+$data = array(
+	'logos'          => $logos,
+	'firstFourlogos' => $firstFourLogos
+);
+
+$scripts = array(
+	// TODO: Populate this bad boy...
+);
 
 $mustache = new Mustache_HTML_Engine();
-echo $mustache->renderContent('Portfolio', Background::get(), 'portfolio', $data, array());
+echo $mustache->renderContent('Portfolio', Background::get(), 'portfolio', $data, $scripts);

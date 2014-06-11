@@ -7,6 +7,11 @@ function showWaitDialog(message, visible) {
 	showDialog("#waitDialog", visible);
 }
 
+function showErrorDialog(message, visible) {
+	$("#errorMessage").html(message);
+	showDialog("#errorDialog", visible);
+}
+
 function startDrag(event, ui) {
 	ui.item.startPos = ui.item.index();
 }
@@ -25,7 +30,7 @@ function stopDrag(event, ui) {
 				})
 				.fail(function(jqXHR, textStatus, errorThrown) {
 					showWaitDialog("", false);
-//					TODO: showDialog('#serverError', true); // WYLO...Make the error dialog (and show it in the other places below)...
+					showErrorDialog("Error: "+errorThrown, true);
 				});
 		}, 1000);
 	}
@@ -61,6 +66,15 @@ function initDialogs() {
 		modal: true,
 		resizable: false,
 		title: "Please Confirm"
+	});
+	
+	$("#errorDialog").dialog({
+		autoOpen: false,
+		buttons: {"OK": function(){showDialog("#errorDialog", false)}},
+		dialogClass: "no-close",
+		modal: true,
+		resizable: false,
+		title: "Server Error"
 	});
 }
 
@@ -121,7 +135,7 @@ $(function() {
 					})
 					.fail(function(jqXHR, textStatus, errorThrown) {
 						showWaitDialog("", false);
-//						TODO: showDialog('#serverError', true);
+						showErrorDialog("Error: "+errorThrown, true);
 					});
 			}, 1000);
 		}
@@ -153,7 +167,7 @@ $(function() {
 								})
 								.fail(function(jqXHR, textStatus, errorThrown) {
 									showWaitDialog("", false);
-//									TODO: showDialog('#serverError', true);
+									showErrorDialog("Error: "+errorThrown, true);
 								});
 						}, 1000);
 					}

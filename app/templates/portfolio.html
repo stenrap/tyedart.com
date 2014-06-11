@@ -1,17 +1,15 @@
     <div id="thumbnail-container">
+        {{#firstFourlogos}}
         <div class="thumbnail">
             <div class="caption">
-                Bishop Software
+                {{caption}}
             </div>
-            <img alt="Tyedart Logo" src="/assets/images/thumbnails/bishop.jpg">
+            <img alt="{{caption}}" src="/assets/images/thumbnails/{{filename}}">
         </div>
-        <div class="thumbnail">
-            <img alt="Tyedart Logo" src="/assets/images/thumbnails/538f2386165ea.jpg">
-        </div>
-        <div class="thumbnail">
-            <img alt="Tyedart Logo" src="/assets/images/thumbnails/538f247d918d8.jpg">
-        </div>
-        <div class="thumbnail">
-            <img alt="Tyedart Logo" src="/assets/images/thumbnails/bishop.jpg">
-        </div>
+        {{/firstFourlogos}}
     </div>
+    <script>
+        var app = app || {};
+        app.logos = new Backbone.Collection();
+        app.logos.reset({{{logos}}});
+    </script>
