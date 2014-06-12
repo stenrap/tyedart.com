@@ -531,6 +531,7 @@ nav {
 
 #thumbnail-container {
 /* 	background-color: #777777; */
+/*     font-size: 0; */
     margin: 0 auto;
 	width: 320px;
 }
@@ -554,28 +555,40 @@ nav {
 }
 
 #portfolio-nav {
-	background-color: #777777;
-	border-bottom: 3px solid #ffffff;
-	border-top: 3px solid #ffffff;
+/* 	background-color: #777777; */
+	border: 3px solid #ffffff;
+	font-size: 0;
 	height: 40px;
 	margin: 20px auto;
-	width: 160px;
-}
-
-#portfolio-nav-prev {
-	float: left;
+	width: 164px;
 }
 
 #portfolio-nav-prev, #portfolio-nav-next {
-	border-left: 3px solid #ffffff;
-	border-right: 3px solid #ffffff;
-	height: 40px;
-	width: 80px;
+	cursor: pointer;
+	display: block;
+    height: 40px;
+}
+
+#portfolio-nav-prev {
+	background: url(/assets/images/prev-white.png) no-repeat center center;
+/* 	border-right: 3px solid #990000; */
+	float: left;
+	width: 81px;
+}
+
+#portfolio-nav-prev:hover {
+	background: url(/assets/images/prev-black.png) #ffffff no-repeat center center;
 }
 
 #portfolio-nav-next {
-/*     border-left: 3px solid #990000; */
+	background: url(/assets/images/next-white.png) no-repeat center center;
+    border-left: 3px solid #ffffff;
     float: right;
+    width: 80px;
+}
+
+#portfolio-nav-next:hover {
+	background: url(/assets/images/next-black.png) #ffffff no-repeat center center;
 }
 
 
@@ -633,14 +646,6 @@ nav {
     #thumbnail-container {
         float: left;
         margin-top: 6.75%;
-    }
-    
-    #portfolio-nav {
-        width: 80px;
-    }
-    
-    #portfolio-nav-prev, #portfolio-nav-next {
-	    width: 33px;
     }
     
 }
