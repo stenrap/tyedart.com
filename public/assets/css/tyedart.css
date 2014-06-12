@@ -553,13 +553,38 @@ nav {
 	width: 100%;
 }
 
+#portfolio-nav {
+	background-color: #777777;
+	border-bottom: 3px solid #ffffff;
+	border-top: 3px solid #ffffff;
+	height: 40px;
+	margin: 20px auto;
+	width: 160px;
+}
+
+#portfolio-nav-prev {
+	float: left;
+}
+
+#portfolio-nav-prev, #portfolio-nav-next {
+	border-left: 3px solid #ffffff;
+	border-right: 3px solid #ffffff;
+	height: 40px;
+	width: 80px;
+}
+
+#portfolio-nav-next {
+/*     border-left: 3px solid #990000; */
+    float: right;
+}
+
 
 /* ================================================== 550 px ================================================== */
 
 @media screen and (min-width: 550px) {
 	
 	#thumbnail-container {
-	    width: 540px;
+	    width: 533px;
 	}
 	
 	.thumbnail img {
@@ -608,6 +633,14 @@ nav {
     #thumbnail-container {
         float: left;
         margin-top: 6.75%;
+    }
+    
+    #portfolio-nav {
+        width: 80px;
+    }
+    
+    #portfolio-nav-prev, #portfolio-nav-next {
+	    width: 33px;
     }
     
 }
