@@ -17,6 +17,7 @@ class Mustache_HTML_Engine extends Mustache_Engine
 	
 	public function renderContent($title, $background, $template, $data, $scripts)
 	{
+		$showBack        = !is_null($background);
 		$baseTemplate    = $this->loadTemplate('base');
 		$contentTemplate = is_null($template) ? '' : $this->loadTemplate($template);
 		$contentHtml     = is_null($template) ? '' : $contentTemplate->render($data);
@@ -24,6 +25,7 @@ class Mustache_HTML_Engine extends Mustache_Engine
 		return $baseTemplate->render(array(
 				
 				'title' => $title,
+				'showBack' => $showBack,
 				'background' => $background,
 				'content' => $contentHtml,
 				'scripts' => '',

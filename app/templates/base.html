@@ -6,44 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Tyedart - {{title}}</title>
     <link rel="stylesheet" href="/assets/css/tyedart.css">
+    {{#showBack}}
     <style type="text/css">
-        body { background-image: url(/assets/images/phone/{{{background}}}); }
-        @media screen and (min-width: 769px) { body { background-image: url(/assets/images/desktop/{{{background}}}); } }
+        @media screen and (max-width: 1023px) { body { background-image: url(/assets/images/phone/{{{background}}}); } }
+        @media screen and (min-width: 1024px) { #content { background-image: url(/assets/images/desktop/{{{background}}}); } }
     </style>
+    {{/showBack}}
 </head>
 <body>
-    <div id="menu-wrapper">
-	    <div id="menu">
-	        <span>MENU</span>
-	        <div id="bars">
-	            <div id="bar1" class="menu-bar"></div>
-	            <div id="bar2" class="menu-bar"></div>
-	            <div id="bar3" class="menu-bar"></div>
-	        </div>
+    <div id="content">
+	    <div id="menu-wrapper">
+		    <div id="menu">
+		        <span>MENU</span>
+		        <div id="bars">
+		            <div id="bar1" class="menu-bar"></div>
+		            <div id="bar2" class="menu-bar"></div>
+		            <div id="bar3" class="menu-bar"></div>
+		        </div>
+		    </div>
+		</div>
+	    <div id="mobile-nav" class="displayNone">
+	        <ul>
+	            <li><a href="portfolio">PORTFOLIO</a></li>
+	            <li>QUOTE</li>
+	            <li>LOGO-OLOGY</li>
+	            <li>RESOURCES</li>
+	            <li>FACEBOOK</li>
+	            <li>CONTACT</li>
+	        </ul>
 	    </div>
-	</div>
-    <div id="mobile-nav" class="displayNone">
-        <ul>
-            <li><a href="portfolio">PORTFOLIO</a></li>
-            <li>QUOTE</li>
-            <li>LOGO-OLOGY</li>
-            <li>RESOURCES</li>
-            <li>FACEBOOK</li>
-            <li>CONTACT</li>
-        </ul>
-    </div>
-    <nav>
-        <ul>
-            <li>PORTFOLIO</li>
-            <li>QUOTE</li>
-            <li>LOGO-OLOGY</li>
-            <li>RESOURCES</li>
-            <li>FACEBOOK</li>
-            <li>CONTACT</li>
-        </ul>
-    </nav>
+	    <nav>
+	        <ul>
+	            <li><span>PORTFOLIO</span></li>
+	            <li><span>QUOTE</span></li>
+	            <li><span>LOGO-OLOGY</span></li>
+	            <li><span>RESOURCES</span></li>
+	            <li><span>FACEBOOK</span></li>
+	            <li><span>CONTACT</span></li>
+	        </ul>
+	    </nav>
+	    
+	{{{content}}}
     
-{{{content}}}
+    </div>
     
     <script src="/assets/js/libs/jquery-min.js"></script>
     <script src="/assets/js/libs/underscore-min.js"></script>

@@ -19,4 +19,4 @@ $scripts = array(
 );
 
 $mustache = new Mustache_HTML_Engine();
-echo $mustache->renderContent('Portfolio', Background::get(), 'portfolio', $data, $scripts);
+echo $mustache->renderContent('Portfolio', null, 'portfolio', $data, $scripts);
