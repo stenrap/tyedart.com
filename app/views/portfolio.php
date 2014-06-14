@@ -19,6 +19,7 @@ $scripts = <<<SCRIPTS
     app.Logos = new Backbone.Collection();
     app.Logos.reset($logos);
 </script>
+<script src="/assets/js/views/portfolio-views.js"></script>
 <script src="/assets/js/apps/portfolio-app.js"></script>
 SCRIPTS;
 

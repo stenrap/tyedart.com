@@ -68,38 +68,17 @@ $(function() {
 	
 	var portfolioModel = new app.PortfolioModel();
 	
-	// prev
-	var PrevView = Backbone.View.extend({
-		
-		events: {
-			"click": "doPrev"
-		},
-		
-		doPrev: function() {
-			this.model.prev();
-		}
-		
+	new app.ThumbnailView({
+		model: portfolioModel,
+		el: "#logo0"
 	});
 	
-	// next
-	var NextView = Backbone.View.extend({
-		
-		events: {
-			"click": "doNext"
-		},
-		
-		doNext: function() {
-			this.model.next();
-		}
-		
-	});
-	
-	new PrevView({
+	new app.PrevButtonView({
 		model: portfolioModel,
 		el: "#portfolio-nav-prev"
 	});
 	
-	new NextView({
+	new app.NextButtonView({
 		model: portfolioModel,
 		el: "#portfolio-nav-next"
 	});
