@@ -6,10 +6,33 @@ $(function() {
 	
 	'use strict';
 	
+	// TODO: Come up with a way to check whether we're on a phone (where no large version of the image will be allowed by clicking a logo/caption)...
+	// TODO: Then add new code for showing the full logo in all its glory...
+	
 	app.ThumbnailView = Backbone.View.extend({
 		
 		initialize: function() {
 			this.caption = this.$el.children().first();
+			this.image   = this.$el.children().last();
+			this.listenTo(this.model, "change", this.changeImage);
+		},
+		
+		changeImage: function() {
+			var indexOfNewLogo = -1;
+			var logoNumber = this.$el.attr("id");
+			
+			if      (logoNumber === "logo0") indexOfNewLogo = this.model.get("indexAtLogo0");
+			else if (logoNumber === "logo1") indexOfNewLogo = this.model.get("indexAtLogo1");
+			else if (logoNumber === "logo2") indexOfNewLogo = this.model.get("indexAtLogo2");
+			else                             indexOfNewLogo = this.model.get("indexAtLogo3");
+			
+			var newLogo     = this.collection.at(indexOfNewLogo);
+			var newCaption  = newLogo.get("caption");
+			var newFilename = newLogo.get("filename");
+			
+			this.caption.html(newCaption);
+			this.image.attr("alt", newCaption);
+			this.image.attr("src", "/assets/images/thumbnails/"+newFilename);
 		},
 		
 		events: {
@@ -60,7 +83,6 @@ $(function() {
 			else if (eventLocation === "right") TweenLite.from(this.caption, 0.38, {left:"265px"});
 			else                                TweenLite.from(this.caption, 0.38, {top:"265px"});
 			this.caption.css("visibility", "visible");
-//			console.log("Came in from the "+eventLocation);
 		},
 		
 		hideCaption: function(event) {
@@ -91,7 +113,6 @@ $(function() {
 							caption.css("top", "0px");
 							caption.css("left", "0px");
 						}});
-//			console.log("Went out from the "+eventLocation);
 		}
 		
 	});
