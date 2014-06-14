@@ -543,6 +543,7 @@ nav {
 .thumbnail {
 /* 	box-shadow: 0px 0px 25px #dddddd; */
 	display: inline-block;
+	overflow: hidden;
 	position: relative;
 }
 
@@ -684,6 +685,10 @@ nav {
 
 .displayBlock {
 	display: block;
+}
+
+.visibilityHidden {
+	visibility: hidden;
 }
 
 

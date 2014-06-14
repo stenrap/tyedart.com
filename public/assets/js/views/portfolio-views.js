@@ -8,9 +8,13 @@ $(function() {
 	
 	app.ThumbnailView = Backbone.View.extend({
 		
+		initialize: function() {
+			this.caption = this.$el.children().first();
+		},
+		
 		events: {
-			"mouseover": "showCaption",
-			"mouseout":  "hideCaption"
+			"mouseenter": "showCaption",
+			"mouseleave": "hideCaption"
 		},
 		
 		getEventLocation: function(event) {
@@ -51,12 +55,43 @@ $(function() {
 		
 		showCaption: function(event) {
 			var eventLocation = this.getEventLocation(event);
-			console.log("Came in from the "+eventLocation);
+			if      (eventLocation === "left")  TweenLite.from(this.caption, 0.38, {left:"-265px"});
+			else if (eventLocation === "top")   TweenLite.from(this.caption, 0.38, {top:"-265px"});
+			else if (eventLocation === "right") TweenLite.from(this.caption, 0.38, {left:"265px"});
+			else                                TweenLite.from(this.caption, 0.38, {top:"265px"});
+			this.caption.css("visibility", "visible");
+//			console.log("Came in from the "+eventLocation);
 		},
 		
 		hideCaption: function(event) {
 			var eventLocation = this.getEventLocation(event);
-			console.log("Went out from the "+eventLocation);
+			var top  = null;
+			var left = null;
+			if  (eventLocation === "left") {
+				top  = "0px";
+				left = "-265px";
+			} else if (eventLocation === "top") {
+				top  = "-265px";
+				left = "0px";
+			} else if (eventLocation === "right") {
+				top  = "0px";
+				left = "256px";
+			} else {
+				top  = "265px";
+				left = "0px";
+			}
+			
+			TweenLite.to(this.caption,
+						0.38,
+						{top:top,
+						left:left,
+						onCompleteParams:[this.caption],
+						onComplete:function(caption) {
+							caption.css("visibility", "hidden");
+							caption.css("top", "0px");
+							caption.css("left", "0px");
+						}});
+//			console.log("Went out from the "+eventLocation);
 		}
 		
 	});

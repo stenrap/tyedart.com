@@ -14,6 +14,8 @@ $data = array(
 );
 
 $scripts = <<<SCRIPTS
+<script src="/assets/js/libs/TweenLite.min.js"></script>
+<script src="/assets/js/libs/CSSPlugin.min.js"></script>
 <script>
     var app = app || {};
     app.Logos = new Backbone.Collection();

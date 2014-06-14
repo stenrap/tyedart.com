@@ -72,6 +72,21 @@ $(function() {
 		model: portfolioModel,
 		el: "#logo0"
 	});
+
+	new app.ThumbnailView({
+		model: portfolioModel,
+		el: "#logo1"
+	});
+
+	new app.ThumbnailView({
+		model: portfolioModel,
+		el: "#logo2"
+	});
+
+	new app.ThumbnailView({
+		model: portfolioModel,
+		el: "#logo3"
+	});
 	
 	new app.PrevButtonView({
 		model: portfolioModel,
