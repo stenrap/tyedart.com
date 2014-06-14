@@ -28,7 +28,7 @@ class Mustache_HTML_Engine extends Mustache_Engine
 				'showBack' => $showBack,
 				'background' => $background,
 				'content' => $contentHtml,
-				'scripts' => '',
+				'scripts' => $scripts,
 				
 		));
 	}

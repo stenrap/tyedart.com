@@ -181,28 +181,28 @@ $(function() {
 	
 	$(".caption").each(function() {
 		new app.CaptionInput({
-			collection: app.logos,
+			collection: app.Logos,
 			el: $(this)
 		});
 	});
 	
 	$(".url").each(function() {
 		new app.UrlInput({
-			collection: app.logos,
+			collection: app.Logos,
 			el: $(this)
 		});
 	});
 	
 	$(".update").each(function() {
 		new app.UpdateButton({
-			collection: app.logos,
+			collection: app.Logos,
 			el: $(this)
 		});
 	});
 	
 	$(".delete").each(function() {
 		new app.DeleteButton({
-			collection: app.logos,
+			collection: app.Logos,
 			el: $(this)
 		});
 	});

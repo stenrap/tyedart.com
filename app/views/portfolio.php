@@ -10,13 +10,17 @@ for ($i = 0; $i < count($logos); $i++) {
 }
 
 $data = array(
-	'logos'          => $logos,
 	'firstFourlogos' => $firstFourLogos
 );
 
-$scripts = array(
-	// TODO: Populate this bad boy...
-);
+$scripts = <<<SCRIPTS
+<script>
+    var app = app || {};
+    app.Logos = new Backbone.Collection();
+    app.Logos.reset($logos);
+</script>
+<script src="/assets/js/apps/portfolio-app.js"></script>
+SCRIPTS;
 
 $mustache = new Mustache_HTML_Engine();
 echo $mustache->renderContent('Portfolio', null, 'portfolio', $data, $scripts);

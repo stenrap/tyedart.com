@@ -560,7 +560,7 @@ nav {
 
 #portfolio-nav {
 /* 	background-color: #777777; */
-	border: 3px solid #ffffff;
+	border: 3px solid #cccccc;
 	font-size: 0;
 	height: 40px;
 	margin: 20px auto;
@@ -581,18 +581,18 @@ nav {
 }
 
 #portfolio-nav-prev:hover {
-	background: url(/assets/images/prev-black.png) #ffffff no-repeat center center;
+	background: url(/assets/images/prev-black.png) #cccccc no-repeat center center;
 }
 
 #portfolio-nav-next {
 	background: url(/assets/images/next-white.png) no-repeat center center;
-    border-left: 3px solid #ffffff;
+    border-left: 3px solid #cccccc;
     float: right;
     width: 80px;
 }
 
 #portfolio-nav-next:hover {
-	background: url(/assets/images/next-black.png) #ffffff no-repeat center center;
+	background: url(/assets/images/next-black.png) #cccccc no-repeat center center;
 }
 
 
