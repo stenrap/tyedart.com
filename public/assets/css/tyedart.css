@@ -442,6 +442,7 @@ body {
 	background-position: center center;
 	background-repeat: no-repeat;
 	font-family: Helvetica, Arial, Sans-Serif;
+	position: relative;
 }
 
 a {
@@ -542,6 +543,7 @@ nav {
 
 .thumbnail {
 /* 	box-shadow: 0px 0px 25px #dddddd; */
+    cursor: pointer;
 	display: inline-block;
 	overflow: hidden;
 	position: relative;
@@ -613,7 +615,7 @@ nav {
 }
 
 
-/* ================================================== 769 px ================================================== */
+/* ================================================== 1024 px ================================================== */
 
 @media screen and (min-width: 1024px) {
 	
@@ -673,6 +675,29 @@ nav {
 /*         margin-top: 6.75%; */
     }
     
+}
+
+#large-logo-back {
+	background-color: rgba(0,0,0,0.875);
+	display: none;
+	height: 100%;
+	left: 0px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 9999;
+}
+
+#loader-back {
+	background: #ffffff url(/assets/images/desktop/loader.gif) no-repeat center center;
+	border-radius: 10px;
+	display: none;
+	height: 48px;
+	margin: auto;
+	position: absolute;
+	width: 48px;
+	top: 0; left: 0; bottom: 0; right: 0;
+	z-index: 10000;
 }
 
 .selected {

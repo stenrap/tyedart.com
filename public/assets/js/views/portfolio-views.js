@@ -6,15 +6,12 @@ $(function() {
 	
 	'use strict';
 	
-	// TODO: Come up with a way to check whether we're on a phone (where no large version of the image will be allowed by clicking a logo/caption)...
-	// TODO: Then add new code for showing the full logo in all its glory...
-	
 	app.ThumbnailView = Backbone.View.extend({
 		
 		initialize: function() {
 			this.caption = this.$el.children().first();
 			this.image   = this.$el.children().last();
-			this.listenTo(this.model, "change", this.changeImage);
+			this.listenTo(this.model, "logosChanged", this.changeImage);
 		},
 		
 		changeImage: function() {
@@ -35,9 +32,28 @@ $(function() {
 			this.image.attr("src", "/assets/images/thumbnails/"+newFilename);
 		},
 		
-		events: {
-			"mouseenter": "showCaption",
-			"mouseleave": "hideCaption"
+		events: function() {
+			var eventHash = {};
+			eventHash["mouseenter"] = "showCaption";
+			eventHash["mouseleave"] = "hideCaption";
+			
+			if (window.screen.availWidth > 720 && window.screen.availHeight > 520) {
+				eventHash["click"] = "thumbnailClicked";
+			}
+			
+			return eventHash;
+		},
+		
+		thumbnailClicked: function() {
+			var indexOfLogo = -1;
+			var logoNumber = this.$el.attr("id");
+			
+			if      (logoNumber === "logo0") indexOfLogo = this.model.get("indexAtLogo0");
+			else if (logoNumber === "logo1") indexOfLogo = this.model.get("indexAtLogo1");
+			else if (logoNumber === "logo2") indexOfLogo = this.model.get("indexAtLogo2");
+			else                             indexOfLogo = this.model.get("indexAtLogo3");
+			
+			this.model.setLargeLogo(indexOfLogo);
 		},
 		
 		getEventLocation: function(event) {
@@ -137,6 +153,26 @@ $(function() {
 		
 		doNext: function() {
 			this.model.next();
+		}
+		
+	});
+	
+	app.LargeLogoView = Backbone.View.extend({
+		
+		initialize: function() {
+			this.listenTo(this.model, "largeLogoChanged", this.showLargeLogo);
+		},
+		
+		showLargeLogo: function() {
+			var largeLogoIndex = this.model.get("indexOfLargeLogo");
+			var logo     = this.collection.at(largeLogoIndex);
+			var caption  = logo.get("caption");
+			var filename = logo.get("filename");
+			
+			// Load the appropriate logo...
+			
+			$("#large-logo-back").show();
+			$("#loader-back").show();
 		}
 		
 	});

@@ -12,7 +12,16 @@ $(function() {
 			indexAtLogo1: 1, // top right
 			indexAtLogo2: 2, // bottom left
 			indexAtLogo3: 3, // bottom right
-			direction: ""    // direction from which logos should transition
+			indexOfLargeLogo: -1
+		},
+		
+		setNewIndices: function(newIndexAtLogo0) {
+			var newIndexAtLogo1 = newIndexAtLogo0 + 1 < app.Logos.length ? newIndexAtLogo0 + 1 : 0;
+			var newIndexAtLogo2 = newIndexAtLogo1 + 1 < app.Logos.length ? newIndexAtLogo1 + 1 : 0;
+			var newIndexAtLogo3 = newIndexAtLogo2 + 1 < app.Logos.length ? newIndexAtLogo2 + 1 : 0;
+			
+			this.set({indexAtLogo0:newIndexAtLogo0, indexAtLogo1:newIndexAtLogo1, indexAtLogo2:newIndexAtLogo2, indexAtLogo3:newIndexAtLogo3});
+			this.trigger('logosChanged');
 		},
 		
 		prev: function() {
@@ -22,11 +31,7 @@ $(function() {
 				newIndexAtLogo0 = app.Logos.length + newIndexAtLogo0;
 			}
 			
-			var newIndexAtLogo1 = newIndexAtLogo0 + 1 < app.Logos.length ? newIndexAtLogo0 + 1 : 0;
-			var newIndexAtLogo2 = newIndexAtLogo1 + 1 < app.Logos.length ? newIndexAtLogo1 + 1 : 0;
-			var newIndexAtLogo3 = newIndexAtLogo2 + 1 < app.Logos.length ? newIndexAtLogo2 + 1 : 0;
-			
-			this.set({indexAtLogo0:newIndexAtLogo0, indexAtLogo1:newIndexAtLogo1, indexAtLogo2:newIndexAtLogo2, indexAtLogo3:newIndexAtLogo3, direction:"left"});
+			this.setNewIndices(newIndexAtLogo0);
 		},
 		
 		next: function() {
@@ -36,11 +41,14 @@ $(function() {
 				newIndexAtLogo0 = newIndexAtLogo0 - app.Logos.length;
 			}
 			
-			var newIndexAtLogo1 = newIndexAtLogo0 + 1 < app.Logos.length ? newIndexAtLogo0 + 1 : 0;
-			var newIndexAtLogo2 = newIndexAtLogo1 + 1 < app.Logos.length ? newIndexAtLogo1 + 1 : 0;
-			var newIndexAtLogo3 = newIndexAtLogo2 + 1 < app.Logos.length ? newIndexAtLogo2 + 1 : 0;
-			
-			this.set({indexAtLogo0:newIndexAtLogo0, indexAtLogo1:newIndexAtLogo1, indexAtLogo2:newIndexAtLogo2, indexAtLogo3:newIndexAtLogo3, direction:"right"});
+			this.setNewIndices(newIndexAtLogo0);
+		},
+		
+		setLargeLogo: function(indexOfLogo) {
+			if (this.get("indexOfLargeLogo") !== indexOfLogo) {
+				this.set("indexOfLargeLogo", indexOfLogo);
+				this.trigger("largeLogoChanged");
+			}
 		}
 		
 	});
@@ -79,6 +87,12 @@ $(function() {
 	new app.NextButtonView({
 		model: portfolioModel,
 		el: "#portfolio-nav-next"
+	});
+	
+	new app.LargeLogoView({
+		collection: app.Logos,
+		model: portfolioModel,
+		el: "#large-logo-back"
 	});
 	
 });
