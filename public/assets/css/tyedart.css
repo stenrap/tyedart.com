@@ -700,6 +700,21 @@ nav {
 	z-index: 10000;
 }
 
+#large-logo-container {
+	background: #ffffff;
+	border: 6px solid #cccccc;
+	border-radius: 10px;
+	display: none;
+	margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#large-logo {
+	max-height: 100%;
+	max-width: 100%;
+}
+
 .selected {
 	background: url(/assets/images/desktop/nav-hover.png) no-repeat right center;
 }

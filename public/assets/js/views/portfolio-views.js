@@ -1,6 +1,7 @@
 /* Global Backbone App */
 var app = app || {};
 app.THUMBNAME_SIZE = 265;
+app.LoadedLogos = {};
 
 $(function() {
 	
@@ -163,16 +164,90 @@ $(function() {
 			this.listenTo(this.model, "largeLogoChanged", this.showLargeLogo);
 		},
 		
+		animateLargeLogoIn: function(logo) {
+			var logoContainerWidth  = 0;
+			var logoContainerHeight = 0;
+			var logoContainerBorder = 20;
+			var logoContainerMargin = 40;
+			var logoScalePercentage = 0;
+			var logoWiderThanViewport  = logo.width  + logoContainerBorder + logoContainerMargin > window.innerWidth;
+			var logoTallerThanViewport = logo.height + logoContainerBorder + logoContainerMargin > window.innerHeight;
+			var logoWiderThanTaller = logo.width > logo.height;
+			
+			// WYLO: There are bugs in the logic for setting logoContainerWidth and logoContainerHeight...figure it out...
+			
+			if (logoWiderThanViewport && logoTallerThanViewport) {
+				if (logoWiderThanTaller) {
+//					logoContainerWidth  = window.innerWidth - logoContainerBorder - logoContainerMargin;
+//					logoScalePercentage = logoContainerWidth / logo.width;
+//					logoContainerHeight = logo.height * logoScalePercentage;
+					logoContainerHeight = window.innerHeight - logoContainerBorder - logoContainerMargin;
+					logoScalePercentage = logoContainerHeight / logo.height;
+					logoContainerWidth  = logo.width * logoScalePercentage;
+					console.log(1);
+				} else {
+//					logoContainerHeight = window.innerHeight - logoContainerBorder - logoContainerMargin;
+//					logoScalePercentage = logoContainerHeight / logo.height;
+//					logoContainerWidth  = logo.width * logoScalePercentage;
+					logoContainerWidth  = window.innerWidth - logoContainerBorder - logoContainerMargin;
+					logoScalePercentage = logoContainerWidth / logo.width;
+					logoContainerHeight = logo.height * logoScalePercentage;
+					console.log(2);
+				}
+			} else if (logoWiderThanViewport) {
+				logoContainerWidth  = window.innerWidth - logoContainerBorder - logoContainerMargin;
+				logoScalePercentage = logoContainerWidth / logo.width;
+				logoContainerHeight = logo.height * logoScalePercentage;
+				console.log(3);
+			} else if (logoTallerThanViewport) {
+				logoContainerHeight = window.innerHeight - logoContainerBorder - logoContainerMargin;
+				logoScalePercentage = logoContainerHeight / logo.height;
+				logoContainerWidth  = logo.width * logoScalePercentage;
+				console.log(4);
+			} else {
+				logoContainerWidth  = logo.width;
+				logoContainerHeight = logo.height;
+				console.log(5);
+			}
+			
+			$("#large-logo-container").css("width",  logoContainerWidth);
+			$("#large-logo-container").css("height", logoContainerHeight);
+			
+			// TODO: Animate the large-logo-container into its size....
+			$(logo).attr("id", "large-logo");
+			$("#large-logo-container").append(logo);
+			$("#large-logo-container").show();
+		},
+		
 		showLargeLogo: function() {
 			var largeLogoIndex = this.model.get("indexOfLargeLogo");
 			var logo     = this.collection.at(largeLogoIndex);
 			var caption  = logo.get("caption");
 			var filename = logo.get("filename");
-			
-			// Load the appropriate logo...
+			var view     = this;
 			
 			$("#large-logo-back").show();
 			$("#loader-back").show();
+			
+			// Load the appropriate logo if it's not already loaded...
+			if ($("#large-logo").length) {
+				$("#large-logo").remove();
+			}
+			
+			if (app.LoadedLogos[filename]) {
+				// Add the image
+				console.log("(e) Dimensions are: "+app.LoadedLogos[filename].width+" x "+app.LoadedLogos[filename].height);
+				view.animateLargeLogoIn(app.LoadedLogos[filename]);
+				return;
+			}
+			
+			app.LoadedLogos[filename] = new Image();
+			app.LoadedLogos[filename].onload = function() {
+				console.log("(n) Dimensions are: "+this.width+" x "+this.height);
+				view.animateLargeLogoIn(this);
+			}
+			app.LoadedLogos[filename].alt = caption;
+			app.LoadedLogos[filename].src = "/assets/images/desktop/"+filename;
 		}
 		
 	});
