@@ -62,6 +62,8 @@ $(function() {
 			var relativeX = event.pageX - pos.left;
 			var relativeY = event.pageY - pos.top;
 			
+			// TODO: Fix the bug where you come in from a low right side (left or right) and this function thinks you came in from the bottom...
+			
 			if (relativeX < (app.THUMBNAME_SIZE / 2)) {
 				if (relativeY < (app.THUMBNAME_SIZE / 2)) {
 					if (relativeX < relativeY) {
@@ -161,70 +163,80 @@ $(function() {
 	app.LargeLogoView = Backbone.View.extend({
 		
 		initialize: function() {
-			this.listenTo(this.model, "largeLogoChanged", this.showLargeLogo);
+			this.caption  = "";
+			this.filename = "";
+			this.logoContainerWidth  = 0;
+			this.logoContainerHeight = 0;
+			this.listenTo(this.model, "largeLogoChanged", this.getLargeLogo);
 		},
 		
-		animateLargeLogoIn: function(logo) {
-			var logoContainerWidth  = 0;
-			var logoContainerHeight = 0;
-			var logoContainerBorder = 20;
-			var logoContainerMargin = 40;
-			var logoScalePercentage = 0;
-			var logoWiderThanViewport  = logo.width  + logoContainerBorder + logoContainerMargin > window.innerWidth;
-			var logoTallerThanViewport = logo.height + logoContainerBorder + logoContainerMargin > window.innerHeight;
-			var logoWiderThanTaller = logo.width > logo.height;
+		setContainerSize: function() {
+			var border = 12;
+			var margin = 20;
+			this.logoContainerWidth  = app.LoadedLogos[this.filename].width;
+			this.logoContainerHeight = app.LoadedLogos[this.filename].height;
 			
-			// WYLO: There are bugs in the logic for setting logoContainerWidth and logoContainerHeight...figure it out...
+			var scale = 1.0;
 			
-			if (logoWiderThanViewport && logoTallerThanViewport) {
-				if (logoWiderThanTaller) {
-//					logoContainerWidth  = window.innerWidth - logoContainerBorder - logoContainerMargin;
-//					logoScalePercentage = logoContainerWidth / logo.width;
-//					logoContainerHeight = logo.height * logoScalePercentage;
-					logoContainerHeight = window.innerHeight - logoContainerBorder - logoContainerMargin;
-					logoScalePercentage = logoContainerHeight / logo.height;
-					logoContainerWidth  = logo.width * logoScalePercentage;
-					console.log(1);
-				} else {
-//					logoContainerHeight = window.innerHeight - logoContainerBorder - logoContainerMargin;
-//					logoScalePercentage = logoContainerHeight / logo.height;
-//					logoContainerWidth  = logo.width * logoScalePercentage;
-					logoContainerWidth  = window.innerWidth - logoContainerBorder - logoContainerMargin;
-					logoScalePercentage = logoContainerWidth / logo.width;
-					logoContainerHeight = logo.height * logoScalePercentage;
-					console.log(2);
+			while (this.logoContainerWidth  >= window.innerWidth - margin - border  ||
+				   this.logoContainerHeight >= window.innerHeight - margin - border) {
+				this.logoContainerWidth  *= scale;
+				this.logoContainerHeight *= scale;
+				scale -= 0.01;
+				console.log("scale is now: "+scale);
+				if (this.logoContainerWidth <= 500 || this.logoContainerHeight <= 500) {
+					break;
 				}
-			} else if (logoWiderThanViewport) {
-				logoContainerWidth  = window.innerWidth - logoContainerBorder - logoContainerMargin;
-				logoScalePercentage = logoContainerWidth / logo.width;
-				logoContainerHeight = logo.height * logoScalePercentage;
-				console.log(3);
-			} else if (logoTallerThanViewport) {
-				logoContainerHeight = window.innerHeight - logoContainerBorder - logoContainerMargin;
-				logoScalePercentage = logoContainerHeight / logo.height;
-				logoContainerWidth  = logo.width * logoScalePercentage;
-				console.log(4);
-			} else {
-				logoContainerWidth  = logo.width;
-				logoContainerHeight = logo.height;
-				console.log(5);
 			}
+		},
+		
+		animateLargeLogoIn: function() {
+			this.setContainerSize();
 			
-			$("#large-logo-container").css("width",  logoContainerWidth);
-			$("#large-logo-container").css("height", logoContainerHeight);
+			console.log("(scaled) Dimensions are: "+this.logoContainerWidth+" x "+this.logoContainerHeight);
 			
-			// TODO: Animate the large-logo-container into its size....
-			$(logo).attr("id", "large-logo");
-			$("#large-logo-container").append(logo);
+			$("#large-logo-container").css("width",  this.logoContainerWidth);
+			$("#large-logo-container").css("height", this.logoContainerHeight);
+			$(app.LoadedLogos[this.filename]).attr("id", "large-logo");
+			
+			TweenLite.to($("#large-logo-container"), 0, {scale:1});
+			
+			TweenLite.from($("#large-logo-container"),
+							0.38,
+							{scale:0,
+							onCompleteParams:[$("#loader-back"),
+							                  $("#large-logo-container"),
+							                  app.LoadedLogos[this.filename],
+							                  $("#large-logo-close"),
+							                  $("#large-logo-back"),
+							                  this.animateLargeLogoOut],
+							onComplete:function(loader, container, logo, close, back, out) {
+								loader.hide();
+								container.append(logo);
+								close.click(out);
+								back.click(out);
+							}});
+			
 			$("#large-logo-container").show();
 		},
 		
-		showLargeLogo: function() {
-			var largeLogoIndex = this.model.get("indexOfLargeLogo");
-			var logo     = this.collection.at(largeLogoIndex);
-			var caption  = logo.get("caption");
-			var filename = logo.get("filename");
-			var view     = this;
+		animateLargeLogoOut: function() {
+			$("#large-logo-close, #large-logo-back").off('click');
+			TweenLite.to($("#large-logo-container"),
+					0.38,
+					{scale:0,
+					onCompleteParams:[$("#large-logo-back")],
+					onComplete:function(back) {
+						back.hide();
+					}});
+		},
+		
+		getLargeLogo: function() {
+			var index     = this.model.get("indexOfLargeLogo");
+			var logo      = this.collection.at(index);
+			this.caption  = logo.get("caption");
+			this.filename = logo.get("filename");
+			var view      = this;
 			
 			$("#large-logo-back").show();
 			$("#loader-back").show();
@@ -234,20 +246,20 @@ $(function() {
 				$("#large-logo").remove();
 			}
 			
-			if (app.LoadedLogos[filename]) {
+			if (app.LoadedLogos[this.filename]) {
 				// Add the image
-				console.log("(e) Dimensions are: "+app.LoadedLogos[filename].width+" x "+app.LoadedLogos[filename].height);
-				view.animateLargeLogoIn(app.LoadedLogos[filename]);
+				console.log("(cached) Dimensions are: "+app.LoadedLogos[this.filename].width+" x "+app.LoadedLogos[this.filename].height);
+				view.animateLargeLogoIn();
 				return;
 			}
 			
-			app.LoadedLogos[filename] = new Image();
-			app.LoadedLogos[filename].onload = function() {
-				console.log("(n) Dimensions are: "+this.width+" x "+this.height);
-				view.animateLargeLogoIn(this);
+			app.LoadedLogos[this.filename] = new Image();
+			app.LoadedLogos[this.filename].onload = function() {
+				console.log("(loaded) Dimensions are: "+this.width+" x "+this.height);
+				view.animateLargeLogoIn();
 			}
-			app.LoadedLogos[filename].alt = caption;
-			app.LoadedLogos[filename].src = "/assets/images/desktop/"+filename;
+			app.LoadedLogos[this.filename].alt = this.caption;
+			app.LoadedLogos[this.filename].src = "/assets/images/desktop/"+this.filename;
 		}
 		
 	});

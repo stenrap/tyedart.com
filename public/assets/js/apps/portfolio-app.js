@@ -47,8 +47,8 @@ $(function() {
 		setLargeLogo: function(indexOfLogo) {
 			if (this.get("indexOfLargeLogo") !== indexOfLogo) {
 				this.set("indexOfLargeLogo", indexOfLogo);
-				this.trigger("largeLogoChanged");
 			}
+			this.trigger("largeLogoChanged");
 		}
 		
 	});
