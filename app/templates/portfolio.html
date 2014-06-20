@@ -3,6 +3,9 @@
         <div class="thumbnail" id="logo{{place}}">
             <div class="caption visibilityHidden">
                 {{caption}}
+                {{#url}}
+	            <a href="{{url}}" target="_blank" class="visit-link">website</a>
+	            {{/url}}
             </div>
             <img alt="{{caption}}" src="/assets/images/thumbnails/{{filename}}">
         </div>

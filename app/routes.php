@@ -11,7 +11,9 @@
 |
 */
 
-Route::resource('portfolio', 'PortfolioController', array('only' => array('index', 'show')));
+Route::resource('quote', 'QuoteController', array('only' => array('index', 'store')));
+
+Route::resource('portfolio', 'PortfolioController', array('only' => array('index')));
 
 Route::controller('login', 'LoginController');
 

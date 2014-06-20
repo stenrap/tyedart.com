@@ -561,6 +561,16 @@ nav {
 	width: 100%;
 }
 
+.visit-link {
+	background: url(/assets/images/desktop/external.png) no-repeat right 32%;
+	color: #ffffff;
+	display: block;
+	font-size: 1.25rem;
+	letter-spacing: 0.22rem;
+	margin: 10px auto 0 auto;
+	width: 35%;
+}
+
 #portfolio-nav {
 /* 	background-color: #777777; */
 	border: 3px solid #cccccc;

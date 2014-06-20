@@ -17,7 +17,6 @@ class ManageController extends BaseController
 	{
 		$logos = Logo::all();
 		return View::make('manage');
-// 		return "The caption for logo 1: ".$logos[1]->caption;
 	}
 	
 	/**

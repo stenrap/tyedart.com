@@ -13,6 +13,7 @@ $(function() {
 			this.caption = this.$el.children().first();
 			this.image   = this.$el.children().last();
 			this.listenTo(this.model, "logosChanged", this.changeImage);
+			$(".visit-link").on('click', function(event){event.stopPropagation();});
 		},
 		
 		changeImage: function() {
@@ -26,7 +27,12 @@ $(function() {
 			
 			var newLogo     = this.collection.at(indexOfNewLogo);
 			var newCaption  = newLogo.get("caption");
+			var newUrl      = newLogo.get("url");
 			var newFilename = newLogo.get("filename");
+			
+			if (newUrl) {
+				newCaption += '<a href="'+newUrl+'" target="_blank" class="visit-link">website</a>';
+			}
 			
 			this.caption.html(newCaption);
 			this.image.attr("alt", newCaption);
@@ -58,11 +64,15 @@ $(function() {
 		},
 		
 		getEventLocation: function(event) {
-			var pos = this.$el.position();
+			var pos = this.$el.offset();
 			var relativeX = event.pageX - pos.left;
 			var relativeY = event.pageY - pos.top;
 			
-			// TODO: Fix the bug where you come in from a low right side (left or right) and this function thinks you came in from the bottom...
+//			console.clear();
+//			console.log("top:    "+relativeY);
+//			console.log("right:  "+(app.THUMBNAME_SIZE - relativeX));
+//			console.log("bottom: "+(app.THUMBNAME_SIZE - relativeY));
+//			console.log("left:   "+relativeX);
 			
 			if (relativeX < (app.THUMBNAME_SIZE / 2)) {
 				if (relativeY < (app.THUMBNAME_SIZE / 2)) {
@@ -73,6 +83,7 @@ $(function() {
 					}
 				} else {
 					if ((app.THUMBNAME_SIZE - relativeY) < relativeX) {
+						console.log(1);
 						return "bottom";
 					} else {
 						return "left";
@@ -83,6 +94,7 @@ $(function() {
 					if (relativeX > relativeY) {
 						return "right";
 					} else {
+						console.log(2);
 						return "bottom";
 					}
 				} else {
@@ -116,7 +128,7 @@ $(function() {
 				left = "0px";
 			} else if (eventLocation === "right") {
 				top  = "0px";
-				left = "256px";
+				left = "265px";
 			} else {
 				top  = "265px";
 				left = "0px";
