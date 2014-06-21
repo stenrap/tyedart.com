@@ -6,7 +6,8 @@ $data = array(
 );
 
 $scripts = <<<SCRIPTS
-
+<script src="/assets/js/libs/jquery.validate.min.js"></script>
+<script src="/assets/js/apps/quote-app.js"></script>
 SCRIPTS;
 
 $mustache = new Mustache_HTML_Engine();

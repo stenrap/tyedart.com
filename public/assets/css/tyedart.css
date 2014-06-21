@@ -762,7 +762,6 @@ nav {
     #menu-wrapper, #menu, #mobile-nav {
         display: none;
     }
-    /**/
     
     #content {
 /*         background-color: #777777; */
@@ -809,12 +808,18 @@ nav {
         background: url(/assets/images/desktop/nav-hover.png) no-repeat right center;
         cursor: pointer;
     }
-    
+
+
+/* Portfolio */
+
     #thumbnail-container {
 /*         float: left; */
 /*         margin-top: 6.75%; */
     }
-    
+
+
+/* Quote */
+
     #quote-form input[type="text"], 
     #quote-form input[type="email"], 
     #quote-form input[type="url"] {
