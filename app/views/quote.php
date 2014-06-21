@@ -1,6 +1,9 @@
 <?php
 
-$data = array();
+$data = array(
+	'posted' => $posted,
+	'got'    => !$posted
+);
 
 $scripts = <<<SCRIPTS
 

@@ -9,7 +9,13 @@ class QuoteController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('quote');
+		$posted = Session::has('posted');
+		
+		if ($posted) {
+			Session::forget('posted');
+		}
+		
+		return View::make('quote')->with('posted', $posted);
 	}
 
 
@@ -20,7 +26,9 @@ class QuoteController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// INSERT the quote...
+		
+		return Redirect::to('quote')->with('posted', true);
 	}
 
 

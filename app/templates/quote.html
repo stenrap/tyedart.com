@@ -1,0 +1,35 @@
+<!-- 
+
+remember: start with mobile first!
+
+first name
+last name
+phone
+email
+company/organization name
+website
+best time to be contacted
+who may I thank for referring you?
+description of work
+
+ -->
+
+{{#got}}
+<div id="quote-wrapper">
+    <form action="" method="post" id="quote-form">
+        <label for="first">&#9734;</label> <input type="text" name="first" placeholder="First Name" />
+        <label for="last">&#9734;</label> <input type="text" name="last" placeholder="Last Name" />
+        <label for="phone">&#9734;</label> <input type="text" name="phone" placeholder="Phone" />
+        <label for="email">&#9734;</label> <input type="email" name="email" placeholder="Email" />
+        <label for="org" class="visibilityHidden">&#9734;</label> <input type="text" name="org" placeholder="Company/Organization" />
+        <label for="site" class="visibilityHidden">&#9734;</label> <input type="url" name="site" placeholder="Website" />
+        <label for="time" class="visibilityHidden">&#9734;</label> <input type="text" name="time" placeholder="Best time to be contacted" />
+        <label for="refer" class="visibilityHidden">&#9734;</label> <input type="text" name="refer" placeholder="Whom shall I thank for referring you?" />
+        <label for="work">&#9734;</label> <textarea name="work" placeholder="Description of work..."></textarea>
+        <input type="submit" value="Request Quote" />
+    </form>
+</div>
+{{/got}}
+{{#posted}}
+
+{{/posted}}

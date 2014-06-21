@@ -534,6 +534,9 @@ nav {
 	display: none;
 }
 
+
+/* portfolio */
+
 #thumbnail-container {
 /* 	background-color: #777777; */
 /*     font-size: 0; */
@@ -608,14 +611,126 @@ nav {
 	background: url(/assets/images/next-black.png) #cccccc no-repeat center center;
 }
 
+#large-logo-back {
+    background-color: rgba(0,0,0,0.875);
+    display: none;
+    height: 100%;
+    left: 0px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 9999;
+}
 
-/* ================================================== 550 px ================================================== */
+#loader-back {
+    background: #ffffff url(/assets/images/desktop/loader.gif) no-repeat center center;
+    border-radius: 10px;
+    display: none;
+    height: 48px;
+    margin: auto;
+    position: absolute;
+    width: 48px;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 10000;
+}
+
+#large-logo-container {
+    background: #ffffff;
+    border: 6px solid #cccccc;
+    border-radius: 10px;
+    display: none;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+}
+
+#large-logo-close {
+    background: url(/assets/images/desktop/close.png) no-repeat center center;
+    cursor: pointer;
+    height: 32px;
+    right: -19px;
+    position: absolute;
+    width: 32px;
+    top: -19px;
+    z-index: 10001;
+}
+
+#large-logo {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.selected {
+    background: url(/assets/images/desktop/nav-hover.png) no-repeat right center;
+}
+
+
+/* quote */
+
+/* WYLO: Come up with good and correct widths for the #quote-wrapper, #quote-form, and all the inputs for both mobile and desktop... */
+
+#quote-wrapper {
+/*     background: #888888; */
+    margin: 0 auto;
+    width: 320px;
+}
+
+#quote-form {
+    margin: 0 auto;
+    padding-top: 6px;
+    width: 322px;
+}
+
+#quote-form label {
+	color: #ffffff;
+	font-size: 1.2rem;
+	opacity: 0.33;
+}
+
+#quote-form input[type="text"], 
+#quote-form input[type="email"], 
+#quote-form input[type="url"], 
+#quote-form textarea {
+    background: linear-gradient(to bottom, rgba(0,0,0,.625) 0%, rgba(116,116,116,.5) 100%);
+    border: 1px solid #555555;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1.4rem;
+    height: 34px;
+    margin-top: 10px;
+    outline: none;
+    padding: 0 10px;
+    width: 280px;
+}
+
+#quote-form textarea {
+	height: 110px;
+	padding: 10px;
+	vertical-align: middle;
+}
+
+#quote-form input[type="submit"] {
+    border: 1px solid #414141;
+    border-radius: 5px;
+    display: block;
+    font-size: 1.4rem;
+    height: 48px;
+    margin: 10px auto;
+    padding: 0 10px;
+}
+
+
+/* ================================================== min-width 550 px ================================================== */
 
 @media screen and (min-width: 550px) {
 	
 	#thumbnail-container {
 	    width: 533px;
 	}
+	
+	#quote-wrapper {
+        width: 533px;
+    }
 	
 	.thumbnail img {
 	    height: auto;
@@ -625,7 +740,7 @@ nav {
 }
 
 
-/* ================================================== 1024 px ================================================== */
+/* ================================================== min-width 1024 px ================================================== */
 
 @media screen and (min-width: 1024px) {
 	
@@ -685,59 +800,10 @@ nav {
 /*         margin-top: 6.75%; */
     }
     
-}
-
-#large-logo-back {
-	background-color: rgba(0,0,0,0.875);
-	display: none;
-	height: 100%;
-	left: 0px;
-	position: fixed;
-	top: 0px;
-	width: 100%;
-	z-index: 9999;
-}
-
-#loader-back {
-	background: #ffffff url(/assets/images/desktop/loader.gif) no-repeat center center;
-	border-radius: 10px;
-	display: none;
-	height: 48px;
-	margin: auto;
-	position: absolute;
-	width: 48px;
-	top: 0; left: 0; bottom: 0; right: 0;
-	z-index: 10000;
-}
-
-#large-logo-container {
-	background: #ffffff;
-	border: 6px solid #cccccc;
-	border-radius: 10px;
-	display: none;
-	margin: auto;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-}
-
-#large-logo-close {
-	background: url(/assets/images/desktop/close.png) no-repeat center center;
-	cursor: pointer;
-	height: 32px;
-	right: -19px;
-    position: absolute;
-    width: 32px;
-    top: -19px;
-    z-index: 10001;
-}
-
-#large-logo {
-	max-height: 100%;
-	max-width: 100%;
-}
-
-.selected {
-	background: url(/assets/images/desktop/nav-hover.png) no-repeat right center;
+    #quote-form input[type="submit"] {
+        height: 34px;
+    }
+    
 }
 
 .displayNone {
