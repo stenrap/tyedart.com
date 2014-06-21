@@ -672,13 +672,13 @@ nav {
 #quote-wrapper {
 /*     background: #888888; */
     margin: 0 auto;
-    width: 320px;
+    width: 304px;
 }
 
 #quote-form {
     margin: 0 auto;
     padding-top: 6px;
-    width: 322px;
+    width: 304px; /* This == (star [~12px] + width + padding + border) of below inputs */
 }
 
 #quote-form label {
@@ -696,11 +696,11 @@ nav {
     border-radius: 5px;
     color: #ffffff;
     font-size: 1.4rem;
-    height: 34px;
-    margin-top: 10px;
+    height: 48px;
+    margin: 10px 0 0 5px;
     outline: none;
     padding: 0 10px;
-    width: 280px;
+    width: 260px;
 }
 
 #quote-form textarea {
@@ -715,7 +715,7 @@ nav {
     display: block;
     font-size: 1.4rem;
     height: 48px;
-    margin: 10px auto;
+    margin: 10px auto 20px auto;
     padding: 0 10px;
 }
 
@@ -724,19 +724,34 @@ nav {
 
 @media screen and (min-width: 550px) {
 	
+/* Portfolio */
+	
 	#thumbnail-container {
 	    width: 533px;
 	}
-	
-	#quote-wrapper {
-        width: 533px;
-    }
 	
 	.thumbnail img {
 	    height: auto;
 	    width: 265px;
 	}
 	
+	
+/* Quote */
+	
+	#quote-wrapper {
+        width: 503px;
+    }
+    
+    #quote-form {
+        width: 503px;
+    }
+    
+    #quote-form input[type="text"], 
+	#quote-form input[type="email"], 
+	#quote-form input[type="url"], 
+	#quote-form textarea {
+	    width: 459px;
+	}
 }
 
 
@@ -798,6 +813,12 @@ nav {
     #thumbnail-container {
 /*         float: left; */
 /*         margin-top: 6.75%; */
+    }
+    
+    #quote-form input[type="text"], 
+    #quote-form input[type="email"], 
+    #quote-form input[type="url"] {
+	    height: 34px;
     }
     
     #quote-form input[type="submit"] {
