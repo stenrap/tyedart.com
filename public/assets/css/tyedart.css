@@ -719,6 +719,11 @@ nav {
     padding: 0 10px;
 }
 
+#quote-wrapper p {
+	color: #ffffff;
+	font-size: 1.6rem;
+}
+
 
 /* ================================================== min-width 550 px ================================================== */
 
@@ -828,6 +833,10 @@ nav {
     
     #quote-form input[type="submit"] {
         height: 34px;
+    }
+    
+    #quote-wrapper p {
+        padding-top: 32px;
     }
     
 }

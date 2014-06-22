@@ -1,21 +1,6 @@
-<!-- 
 
-remember: start with mobile first!
-
-first name
-last name
-phone
-email
-company/organization name
-website
-best time to be contacted
-who may I thank for referring you?
-description of work
-
- -->
-
-{{#got}}
 <div id="quote-wrapper">
+    {{#got}}
     <form action="" method="post" id="quote-form">
         <label for="first">&#9734;</label><input type="text" name="first" placeholder="First Name" />
         <label for="last">&#9734;</label><input type="text" name="last" placeholder="Last Name" />
@@ -28,8 +13,8 @@ description of work
         <label for="work">&#9734;</label><textarea name="work" placeholder="Description of work..."></textarea>
         <input type="submit" value="Request Quote" />
     </form>
+    {{/got}}
+    {{#posted}}
+    <p>Thank you for requesting a quote. Ty will contact you shortly to discuss your project.</p>
+    {{/posted}}
 </div>
-{{/got}}
-{{#posted}}
-
-{{/posted}}

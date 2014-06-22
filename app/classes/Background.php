@@ -56,4 +56,8 @@ class Background
 		
 		return $backgroundArray[$backgroundNumber];
 	}
+	
+	public static function getThanks() {
+		return "thanks.jpg";
+	}
 }

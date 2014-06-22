@@ -531,7 +531,7 @@ input[type="text"], #upload-form input[type="url"] {
     background: linear-gradient(to bottom, rgba(16,16,16,0.625) 0%, rgba(0,0,0,0) 100%);
     border: 1px solid #414141;
     border-radius: 5px;
-    color: #777777;
+    color: #ffffff;
     height: 40px;
     margin-top: 10px;
     outline: none;
