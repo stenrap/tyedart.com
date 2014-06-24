@@ -11,14 +11,17 @@
 |
 */
 
+App::missing(function($exception) {
+	return Response::view('error', array(), 404);
+});
+
 Route::resource('quote', 'QuoteController', array('only' => array('index', 'store')));
 
 Route::resource('portfolio', 'PortfolioController', array('only' => array('index')));
 
 Route::controller('login', 'LoginController');
 
-Route::get('logout', function()
-{
+Route::get('logout', function() {
 	if (Auth::check()) {
 		Auth::logout();
 	}

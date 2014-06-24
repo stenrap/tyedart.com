@@ -60,4 +60,8 @@ class Background
 	public static function getThanks() {
 		return "thanks.jpg";
 	}
+	
+	public static function getVenn() {
+		return "venn.png";
+	}
 }

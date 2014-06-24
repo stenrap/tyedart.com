@@ -724,6 +724,21 @@ nav {
 	font-size: 1.6rem;
 }
 
+#venn-wrapper {
+    color: #ffffff;
+    margin: 0 auto;
+    width: 320px;
+}
+
+#venn-wrapper p {
+    font-size: 1.6rem;
+}
+
+#venn-wrapper img {
+	margin-top: 20px;
+    max-width: 100%;
+}
+
 
 /* ================================================== min-width 550 px ================================================== */
 
@@ -756,6 +771,10 @@ nav {
 	#quote-form input[type="url"], 
 	#quote-form textarea {
 	    width: 459px;
+	}
+	
+	#venn-wrapper {
+	    width: 533px;
 	}
 }
 
@@ -839,6 +858,14 @@ nav {
         padding-top: 32px;
     }
     
+    #venn-wrapper h1 {
+        padding-top: 32px;
+    }
+    
+}
+
+#venn-error {
+    color: #ffffff;
 }
 
 .displayNone {
